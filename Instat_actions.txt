@@ -1,0 +1,117 @@
+//positions
+'GK','RD','LD','CD','RCD','LCD',
+'CDM','RDM','LDM','RCDM','LCDM','RCM','LCM','LM','RM',
+'LCAM','RCAM','CAM','LAM','RAM',
+'CF','RCF','LCF',
+'Substitute player',
+
+
+//formations
+'4-4-2 diamond',
+'4-4-2 classic',
+'3-4-3',
+'3-5-2',
+'4-3-3',
+'4-2-3-1',
+
+
+//defense
+'Tackle',
+'Pass interceptions',
+'Clearance',
+'Team pressing successful',
+'Team pressing unsuccessful',
+'End of unsuccessful team pressing',
+'Challenge',
+'Air challenge',
+'Cross interception',
+'End of successful team pressing',
+
+//passing
+'Inaccurate set-piece cross',
+'Crosses accurate',
+'Pass into offside',
+'Key assist',
+'Assisting',
+'Extra attacking pass accurate',
+'Misplaced crossing from set piece with a goal',
+'Ball receiving',
+'Assist',
+'Attacking pass accurate',
+'Accurate crossing from set piece',
+ 'Attacking pass inaccurate',
+ 'Non attacking pass inaccurate',
+'Inaccurate blocked cross',
+'Accurate crossing from set piece with a shot',
+ 'Accurate crossing from set piece with a goal',
+'Set piece cross with goal',
+'Inaccurate key pass',
+ 'Accurate key pass',
+ 'Crosses inaccurate',
+'Misplaced crossing from set piece with a shot',
+ 'Non attacking pass accurate',
+
+//shot
+ 'Shot into the bar/post',
+ 'Blocked shot',
+ 'Shots blocked',
+'Shot on target',
+'Chance was not converted by',
+'Wide shot',
+ 'Shot blocked by field player',
+'Chance was converted by',
+
+//others
+'Half time',
+'Average position 2nd half',
+'Players, that created offside trap',
+'Average position 1st half',
+'line-up',
+'Ball out of the field',
+'Good interception of goalkeeper',
+'Own goal',
+'Goal',
+'Penalty shootout start',
+'Bad interception of goalkeeper',
+ '2nd half',
+ 'Opening',
+'Supersaves',
+'1st half',
+'Offside',
+'Match end',
+'Unknown',
+ None,
+ 'Average position Full match',
+'Error leading to goal',
+ 'Recovered balls',
+ 'Substitution',
+ 'Unforced error',
+ 'Error',
+ 'Lost balls',
+'At high speed',
+
+
+//attack
+'Chance unsuccessful',
+'Building-up начало',  (start)
+'Chances created',
+'Building-up окончание', (end)
+'Chances successful',
+
+
+//infraction
+'YC annulled',
+'RC for two YC',
+'Deferred foul',
+ 'Red card',
+'Foul',
+'Yellow card',
+
+//dribbling
+'Bad ball control',
+'Successful dribbling',
+'Unsuccessful dribbling',
+'Picking up',
+'Dribbling',
+
+
