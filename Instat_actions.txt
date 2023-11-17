@@ -52,9 +52,9 @@
  'Non attacking pass accurate',
 
 //shot
- 'Shot into the bar/post',
- 'Blocked shot',
- 'Shots blocked',
+'Shot into the bar/post',
+'Blocked shot',
+'Shots blocked',
 'Shot on target',
 'Chance was not converted by',
 'Wide shot',
