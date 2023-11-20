@@ -4,26 +4,123 @@ import cmath
 import xml.etree.ElementTree as et
 import numpy as np
 from datetime import timedelta
+import math
+
+#parameter lists
 
 shotlist = ['Shot into the bar/post',
-'Blocked shot',
-'Shots blocked',
-'Shot on target',
-'Chance was not converted by',
-'Wide shot',
-'Shot blocked by field player',
-'Chance was converted by',
-'Accurate crossing from set piece with a shot',
-'Misplaced crossing from set piece with a shot',
-'Accurate crossing from set piece with a goal',
-'Set piece cross with goal',
-'Goal'
+    'Blocked shot',
+    'Shots blocked',
+    'Shot on target',
+    'Chance was not converted by',
+    'Wide shot',
+    'Shot blocked by field player',
+    'Chance was converted by',
+    'Accurate crossing from set piece with a shot',
+    'Misplaced crossing from set piece with a shot',
+    'Accurate crossing from set piece with a goal',
+    'Set piece cross with goal',
+    'Goal'
 ]
 
 ontarget= [
     'Shot on target',
     'Goal'
 ]
+
+primary_events=[
+    'Match end', 
+    'Clearance',
+    'Offside',
+    'Own goal',
+    'Tackle',
+    'Challenge',
+    'Air challenge',
+    'Successful dribbling',
+    'Unsuccessful dribbling',
+    'Ball out of the field',
+    'Deferred foul',
+    'Red card',
+    'Foul',
+    'Yellow card',
+    'RC for two YC',
+    'Pass interceptions',
+    'Shots blocked',
+    'Cross interception',
+    'Attacking pass accurate',
+    'Attacking pass inaccurate',
+    'Accurate key pass',
+    'Inaccurate key pass', 
+    'Non attacking pass inaccurate',
+    'Non attacking pass accurate', 
+    'Blocked shot',
+    'Shot on target',
+    'Wide shot',
+    'Shot blocked by field player',
+    'Goal', 
+    'Assist'
+]
+standart_events=[
+    'Indirect free kick',
+    'Goal kick',
+    'Corner',
+    'Throw-in',
+    'Direct free kick',
+    'Penalty'
+]
+
+duel_events= [
+    'Tackle',
+    'Challenge',
+    'Air challenge',
+    'Successful dribbling',
+    'Unsuccessful dribbling'
+]
+gameinterruption_events=[
+    'Ball out of the field'  #are there more events?
+]
+
+infraction_events = [
+    'Deferred foul',
+    'Red card',
+    'Foul',
+    'Yellow card',
+    'RC for two YC'
+]
+interception_events = [
+    'Pass interceptions',
+    'Shots blocked',
+    'Cross interception'
+]
+
+pass_events = [
+    'Attacking pass accurate',
+    'Attacking pass inaccurate',
+    'Accurate key pass',
+    'Inaccurate key pass', #'Extra attacking pass accurate',
+    'Non attacking pass inaccurate',
+    'Non attacking pass accurate',
+    'Assist'
+]
+shot_events = [
+    'Blocked shot',
+    'Shot on target',
+    'Wide shot',
+    'Shot blocked by field player', #'Shot into the bar/post',
+    'Goal'
+]
+
+#subfunctions
+
+def iswithin20meters(x, y):
+    newx=105-x
+    newy=34-y
+    distance2= math.pow(newx,2)+math.pow(newy,2)
+    d=math.sqrt(distance2)
+    if(d<=20):
+        return True
+    return False
+
 
 
 def standart_transform(standart):
@@ -42,6 +139,26 @@ def standart_transform(standart):
             return "penalty"
         case _:
             raise Exception("something went wrong in standart transform")
+
+
+def calculate_angle(x,y,destx,desty):
+    dx=destx-x
+    dy=desty-y
+    angle = math.atan2(dy, dx)
+    angle= math.degrees(angle)
+    return angle
+
+def isinpenaltybox(x,y):
+    newx,newy = location_transform(x,y)
+    if (newx>=84 and newy>=19 and newy<=81):
+        return True
+    return False
+
+def isinfinalthird(x):
+    if(x>=70):
+        return True
+    return False
+    
 
 def position_transform(instat_position, formation):
     defenders=formation[0]
@@ -108,7 +225,7 @@ def position_transform(instat_position, formation):
             raise Exception("position could not be found")
         
 
-#subfunctions
+
 
 
 
@@ -238,52 +355,7 @@ def setnewpossession(df, index):
     return [startx, starty, endx, endy, length, i], list(set(poss_types)), withshot, withshotongoal, withgoal, flank
 
 
-events=[
-    'Match end', 
-    'Clearance',
-    'Offside',
-    'Own goal',
 
-
-]
-standart_events=[
- 'Indirect free kick',
- 'Goal kick',
- 'Corner',
- 'Throw-in',
- 'Direct free kick',
- 'Penalty'
-]
-
-duel_events= [
-    'Tackle',
-    'Challenge',
-    'Air challenge',
-    'Successful dribbling',
-    'Unsuccessful dribbling'
-]
-gameinterruption_events=[
-    'Deferred foul',
-    'Red card',
-    'Foul',
-    'Yellow card',
-    'RC for two YC'
-]
-
-infraction_events = [
-
-]
-interception_events = [
-
-]
-
-pass_events = [
-
-]
-
-shot_events = [
-
-]
 
 def get_primary_type (df, index):
     action = df['action_name'].iloc[index]
@@ -311,21 +383,122 @@ def get_primary_type (df, index):
         return "shot"
     if action == "Dribbling":
         "touch"
+    else:
+        raise Exception("no primary event was found")
+    
+def check_duel_secondaries(df, index, action, secondary):
+    possessionteam = df['possession_team_name'].iloc[index]
+    team = df['team_name'].iloc[index]
 
-def get_secondary_type(df, index, l):
-    return [] #to do
+    if(action=='Air challenge'):
+        secondary+=["aerial_duel"]
+    if(action=='Challenge' or action=='Tackle'):
+        secondary+=["ground_duel"]
+    if (action=="Tackle"):
+        secondary+=["sliding_tackle"]
+    if (team==possessionteam):
+        secondary+=["offensive_duel"]
+    else:
+        secondary+=["defensive_duel"]
+
+    return secondary
+
+def check_pass_secondaries(df, index, action, secondary):
+    length= df['len'].iloc[index]
+    posx=df['pos_x005F_x'].iloc[index]
+    posy=df['pos_y'].iloc[index]
+    destx=df['pos_dest_x005F_x'].iloc[index]
+    desty=df['pos_dest_y'].iloc[index]
+
+    if (action=='Crosses accurate' or action=='Crosses inaccurate' or action == 'Inaccurate blocked cross'):
+        secondary+=["cross"]
+    if (action=='Inaccurate blocked cross'):
+        secondary+=["cross_blocked"]
+    if (length>45):
+        secondary+=["long_pass"]
+    if (action=='Inaccurate key pass' or action=='Accurate key pass'):
+        secondary+=["key_pass"]
+    if (not isinfinalthird(posx)) and isinfinalthird(destx):
+        secondary+=["pass_to_final_third"]
+    if (not isinpenaltybox(posx,posy)) and isinpenaltybox(destx,desty):
+        secondary+=["pass_into_penalty_area"]
+
+    if not (np.isnan(destx)):
+        if (action=='Crosses accurate' and iswithin20meters(destx,desty)):
+            secondary+=['deep_completed_cross']
+        #pass directions
+        angle=calculate_angle(posx,posy,destx, desty)
+        if (angle<45 and angle>-45):
+            secondary+=["forward_pass"]
+        elif (angle>135 or angle<-135):
+            secondary+=["back_pass"]
+        elif (length >12):
+            secondary+=["lateral_pass"]
+
+    return secondary
+
+
+def check_free_kick_secondaries(df,index, action, secondary):
+    return secondary #to do
+
+
+def check_shot_secondaries(df,index, action, secondary):
+    return secondary #to do
+
+
+def check_infraction_secondaries(df,index, action, secondary):
+    return secondary #to do
+
+
+def check_game_interruption_secondaries(df,index, action, secondary):
+    return secondary #to do
+
+def check_interception_secondaries(df,index, action, secondary):
+    return secondary #to do
+
+def check_touch_secondaries(df,index, action, secondary):
+    return secondary #to do
+
+def get_secondary_type(df, index, primary, secondary):
+    #general tags
+    action = df['action_name'].iloc[index]
+
+    #specialized tags
+    match primary:
+        case "pass":
+            secondary=check_pass_secondaries(df,index, action, secondary)
+        case "free_kick":
+            secondary=check_free_kick_secondaries(df,index, action, secondary)
+        case "shot":
+            secondary=check_shot_secondaries(df,index, action, secondary)
+        case "duel":
+            secondary=check_duel_secondaries(df,index, action, secondary)
+        case "infraction":
+            secondary=check_infraction_secondaries(df,index, action, secondary)
+        case "game_interruption":
+            secondary=check_game_interruption_secondaries(df,index, action, secondary)
+        case "interception":
+            secondary=check_interception_secondaries(df,index, action, secondary)
+        case "touch":
+            secondary=check_touch_secondaries(df,index, action, secondary)
+        case _:
+            return secondary
+
+    return secondary #to do
 
 
 def get_event_type(df, index):
-    secondary=[]
     action = df['action_name'].iloc[index]
-    standart = df['standart_name'].iloc[index]
     if (action=='Match end'):
         raise Exception ("event match end should not been reached in this state")
+    
     primary = get_primary_type(df, index)
+    secondary = get_secondary_type(df, index, primary, [])
+    
     index+=1
-    while(action not in events):  #have to check penalties
-        secondary = get_secondary_type(df, index, secondary)
+    action = df['action_name'].iloc[index]
+    while(action not in primary_events):  #have to check penalties
+        secondary = get_secondary_type(df, index,primary, secondary)
         index+=1
         action=df['action_name'].iloc[index]
-    return index, primary, secondary
+    return index, primary, list(set(secondary))
