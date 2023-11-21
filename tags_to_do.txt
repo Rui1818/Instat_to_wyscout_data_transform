@@ -1,0 +1,22 @@
+#to do 
+
+save_with_reflex,save,
+
+
+
+
+#potentially doing
+carry,conceded_goal,counterpressing_recovery, foul_suffered, penalty_conceded_goal, penalty_foul, penalty_goal,penalty_save,progressive_pass,progressive_run,recovery,
+shot_after_corner,shot_after_free_kick,
+
+#not doing
+head_pass,  dribbled_past_attempt, loose_ball_duel, second_assist,pressing_duel,  
+linkup_play,shot_after_throw_in,smart_pass, third_assist, through_pass,
+whistle, under_pressure,
+
+    
+
+
+ 
+ 
+               

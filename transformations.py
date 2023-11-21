@@ -110,7 +110,37 @@ shot_events = [
     'Goal'
 ]
 
+losslist = [
+    'Attacking pass inaccurate',
+    'Inaccurate key pass',
+    'Non attacking pass inaccurate',
+    'Lost balls'
+]
+
+opplist=[
+    'Chance was converted by',
+    'Chance was not converted by'
+]
+
+shotassistlist=[
+    'Misplaced crossing from set piece with a shot',
+    'Accurate crossing from set piece with a shot',
+    'Accurate crossing from set piece with a goal',
+    'Misplaced crossing from set piece with a goal'
+]
+
+accurat_pass=[
+    'Attacking pass accurate',
+    'Accurate key pass', #'Extra attacking pass accurate',
+    'Non attacking pass accurate',
+    'Assist'
+]
 #subfunctions
+def isshot (action):
+    if action in shotlist:
+        return True
+    return False
+
 
 def iswithin20meters(x, y):
     newx=105-x
@@ -158,7 +188,11 @@ def isinfinalthird(x):
     if(x>=70):
         return True
     return False
-    
+
+def isaccurate_pass(action):
+    if (action in accurat_pass):
+        return True
+    return False
 
 def position_transform(instat_position, formation):
     defenders=formation[0]
@@ -298,6 +332,31 @@ def location_transform(x,y):
 
 #attribute functions
 
+def get_keepers(df):
+    index=0
+    counter=0
+    lp=[]
+    lt=[]
+    while counter<2:
+        if(df['action_name'].iloc[index]=='GK'):
+            player=df['player_name'].iloc[index]
+            team=df['team_name'].iloc[index]
+            lp+=[player]
+            lt+=[team]
+            counter+=1
+        index+=1
+    return [lp[0],lt[0]],[lp[1],lt[1]]
+
+def bodypart_transform(bodypart):
+    if (bodypart=='Head' or bodypart=='Hand'):
+        return "head_or_other"
+    if (bodypart=='Right foot'):
+        return "right_foot"
+    if (bodypart=='Left foot'):
+        return "left_foot"
+    return np.nan
+
+
 def get_period(df, index):
     per = df['half'].iloc[index]
     if (per==1):
@@ -315,8 +374,26 @@ def get_location(df, index):
     locy = df["pos_y"].iloc[index]
     return location_transform(locx, locy)
 
+def get_dest_location(df, index):
+    locx = df["pos_dest_x005F_x"].iloc[index]
+    locy = df["pos_dest_y"].iloc[index]
+    return location_transform(locx, locy)
 
-
+def get_pass_recipient(df, ind):
+    origin_team = df['team_name'].iloc[ind]
+    origin_player = df['player_name'].iloc[ind]
+    index=ind+1
+    action=df['action_name'].iloc[index]
+    rec = df['player_name'].iloc[index]
+    rec_team = df['team_name'].iloc[index]
+    while (origin_team!=rec_team or origin_player==rec):
+        if(action=='Match End'):
+            return np.nan, np.nan
+        index+=1
+        rec = df['player_name'].iloc[index]
+        rec_team= df['team_name'].iloc[index]
+    position = df['position_name'].iloc[index]
+    return rec, position
 
 
 def setnewpossession(df, index):
@@ -389,10 +466,11 @@ def get_primary_type (df, index):
 def check_duel_secondaries(df, index, action, secondary):
     possessionteam = df['possession_team_name'].iloc[index]
     team = df['team_name'].iloc[index]
-
+    if(action=='Unsuccessful dribbling' or 'Successful dribbling'):
+        secondary+=["dribble"]
     if(action=='Air challenge'):
         secondary+=["aerial_duel"]
-    if(action=='Challenge' or action=='Tackle'):
+    else:
         secondary+=["ground_duel"]
     if (action=="Tackle"):
         secondary+=["sliding_tackle"]
@@ -409,13 +487,21 @@ def check_pass_secondaries(df, index, action, secondary):
     posy=df['pos_y'].iloc[index]
     destx=df['pos_dest_x005F_x'].iloc[index]
     desty=df['pos_dest_y'].iloc[index]
+    bodypart = df['body_name'].iloc[index]
 
+    if (bodypart=='Hand'):
+        secondary+=["hand_pass"]
+    if (action=='Assist'):
+        secondary+=["assist"]
     if (action=='Crosses accurate' or action=='Crosses inaccurate' or action == 'Inaccurate blocked cross'):
         secondary+=["cross"]
     if (action=='Inaccurate blocked cross'):
         secondary+=["cross_blocked"]
     if (length>45):
         secondary+=["long_pass"]
+    else:
+        secondary+=["short_or_medium_pass"]
+    
     if (action=='Inaccurate key pass' or action=='Accurate key pass'):
         secondary+=["key_pass"]
     if (not isinfinalthird(posx)) and isinfinalthird(destx):
@@ -426,6 +512,10 @@ def check_pass_secondaries(df, index, action, secondary):
     if not (np.isnan(destx)):
         if (action=='Crosses accurate' and iswithin20meters(destx,desty)):
             secondary+=['deep_completed_cross']
+            if('deep_completion' in secondary):
+                secondary.remove('deep_completion')
+        if (action=='Accurate key pass' or action=='Attacking pass accurate') and iswithin20meters(destx,desty):
+            secondary+=["deep_completion"]
         #pass directions
         angle=calculate_angle(posx,posy,destx, desty)
         if (angle<45 and angle>-45):
@@ -439,30 +529,70 @@ def check_pass_secondaries(df, index, action, secondary):
 
 
 def check_free_kick_secondaries(df,index, action, secondary):
-    return secondary #to do
+    freekickcrosslist=shotassistlist+['Accurate crossing from set piece']+['Inaccurate set-piece cross']
+    if action in shot_events:
+        secondary+=["free_kick_shot"]
+
+    if action in freekickcrosslist:
+        secondary+=["free_kick_cross"]
+    return secondary 
 
 
 def check_shot_secondaries(df,index, action, secondary):
-    return secondary #to do
+    bodypart= df['action_name'].iloc[index]
+    if (bodypart=='Header'):
+        secondary+=["head_shot"]
+    if (action=='Goal'):
+        secondary+=["goal"]
+    return secondary 
 
 
 def check_infraction_secondaries(df,index, action, secondary):
-    return secondary #to do
+    if (action=='Foul' or action=='Deferred foul'):
+        secondary+=["foul"]
+    if(action=='Yellow card'):
+        secondary+=["yellow_card"]
+    if(action=='Red card'):
+        secondary+=["red_card"]
+    return secondary 
 
 
 def check_game_interruption_secondaries(df,index, action, secondary):
-    return secondary #to do
+    if(action=='Ball out of the field'):
+        secondary+=["ball_out"]
+    return secondary 
 
 def check_interception_secondaries(df,index, action, secondary):
-    return secondary #to do
+    if action=='Shot blocked by field player' or action=='Shots blocked':
+        secondary+=["shot_block"]
+    return secondary 
 
 def check_touch_secondaries(df,index, action, secondary):
+    if (action=='Dribbling'):
+        secondary+=['carry']
+
     return secondary #to do
+
+
 
 def get_secondary_type(df, index, primary, secondary):
     #general tags
     action = df['action_name'].iloc[index]
+    possession_status= df['possession_name'].iloc[index]
+    posx=df['pos_x005F_x'].iloc[index]
+    posy=df['pos_y'].iloc[index]
 
+    if action in shotassistlist:
+        secondary+=["shot_assist"]
+
+    if primary!='infraction' and ((action in losslist) or possession_status=='End'):
+        secondary+=["loss"]
+
+    if action in opplist:
+        secondary+=["opportunity"]
+
+    if primary!='duel' and (isinpenaltybox(posx,posy)):
+        secondary+=["touch_in_box"]
     #specialized tags
     match primary:
         case "pass":
@@ -484,7 +614,7 @@ def get_secondary_type(df, index, primary, secondary):
         case _:
             return secondary
 
-    return secondary #to do
+    return secondary
 
 
 def get_event_type(df, index):
@@ -501,4 +631,28 @@ def get_event_type(df, index):
         secondary = get_secondary_type(df, index,primary, secondary)
         index+=1
         action=df['action_name'].iloc[index]
+
+    
     return index, primary, list(set(secondary))
+
+
+
+
+def create_second_duel_event(new_event, keptPoss, stopped_prog):
+    new_event_2=new_event
+    opponent=new_event['player.name']
+    opp_position=new_event['player.position']
+    opp_team=new_event['team.name']
+    opp_formation=new_event['team.formation']
+    secondary=new_event['type.secondary']
+    if ('aerial_duel' in secondary):
+       player=new_event['aerialDuel.opponent.name'] 
+       player_pos=new_event['aerialDuel.opponent.position'] 
+
+    
+    return new_event_2
+
+
+
+def create_second_shot_event(new_event):
+    return 0
