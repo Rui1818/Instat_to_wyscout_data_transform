@@ -396,6 +396,19 @@ def get_pass_recipient(df, ind):
     return rec, position
 
 
+def newposs(df, minindex, maxindex):
+    ind=minindex
+    if (df['possession_time'].iloc[ind]>0):
+        return True, ind
+    while(ind<maxindex):
+        ind+=1
+        if(df['possession_time'].iloc[ind]>0):
+            return True, ind
+        
+    
+    return False, ind
+
+
 def setnewpossession(df, index):
     poss_types=[]
     withshot=withshotongoal= withgoal=flank=np.nan
@@ -411,14 +424,14 @@ def setnewpossession(df, index):
         length = df['possession_time'].iloc[index]
 
     
+    i = index
     if (length==0):
         startx, starty = get_location(df, index)
-        i = index
         poss_types=get_possession_type(df, index, poss_types)
         withshot, withshotongoal, withgoal, flank = get_possession_attack(df, index, withshot, withshotongoal, withgoal, flank)
-
-    else: 
-        raise Exception("possession could not been set")
+    else:
+        startx,starty=get_location(df, index)
+        poss_types=[]
 
     while (np.isnan(length) or length==0):
         index+=1
@@ -461,6 +474,8 @@ def get_primary_type (df, index):
     if action == "Dribbling":
         "touch"
     else:
+        print('index: '+index+', ')
+        print(df['action_name'].iloc[index])
         raise Exception("no primary event was found")
     
 def check_duel_secondaries(df, index, action, secondary):
@@ -638,21 +653,145 @@ def get_event_type(df, index):
 
 
 
-def create_second_duel_event(new_event, keptPoss, stopped_prog):
+def create_second_duel_event(new_event, keptPoss, stopped_prog, current_possession,poss_types, withshot,withshotongoal, withgoal, flank, newposs, ind):
     new_event_2=new_event
     opponent=new_event['player.name']
     opp_position=new_event['player.position']
     opp_team=new_event['team.name']
     opp_formation=new_event['team.formation']
-    secondary=new_event['type.secondary']
-    if ('aerial_duel' in secondary):
-       player=new_event['aerialDuel.opponent.name'] 
-       player_pos=new_event['aerialDuel.opponent.position'] 
+    team=new_event['opponentTeam.name']
+    formation=new_event['opponentTeam.formation']
 
+    secondary=new_event['type.secondary']
+    newsecondary = []
+    #add secondary tags
+    if ('defensive_duel' in secondary):
+        newsecondary+=['offensive_duel']
+    else:
+        newsecondary+=['defensive_duel']
+
+    if('aerial_duel' in secondary):
+        newsecondary+=['aerial_duel']
+    else:
+        newsecondary+=['ground_duel']
+    
+    if(stopped_prog==True):
+        newsecondary+=['recovery']
+    if(keptPoss==False):
+        newsecondary+=['loss']
+    
+    #set possession when it change
+    if(newposs):
+        if (current_possession[5]>ind):
+            new_event_2['possession.startLocation.x']=np.nan
+        else:
+            new_event_2['possession.startLocation.x']=current_possession[0]
+            new_event_2['possession.startLocation.y']=current_possession[1]
+            new_event_2['possession.endLocation.x']=current_possession[2]
+            new_event_2['possession.endLocation.y']=current_possession[3]
+            new_event_2['possession.attack.withShot']=withshot
+            new_event_2['possession.attack.withShotOnGoal']=withshotongoal
+            new_event_2['possession.attack.withGoal']=withgoal
+            new_event_2['possession.attack.flank']=flank
+            new_event_2['possession.types']=poss_types
+
+            
+            if ('defensive_duel' in secondary):
+                if (stopped_prog==True):
+                    new_event_2['possession.team.name']=team
+                    new_event_2['possession.team.formation']=formation
+                else:
+                    new_event_2['possession.team.name']=opp_team
+                    new_event_2['possession.team.formation']=opp_formation
+            else:
+                if (keptPoss==False):
+                    new_event_2['possession.team.name']=opp_team
+                    new_event_2['possession.team.formation']=opp_formation
+                else:
+                    new_event_2['possession.team.name']=team
+                    new_event_2['possession.team.formation']=formation
+
+
+
+
+    #set the new event correctly
+
+    if ('aerial_duel' in secondary):
+        player=new_event['aerialDuel.opponent.name'] 
+        player_pos=new_event['aerialDuel.opponent.position']
+        new_event_2['aerialDuel.opponent.name'] = opponent
+        new_event_2['aerialDuel.opponent.position'] = opp_position
+
+    else:
+        player=new_event['groundDuel.opponent.name']
+        player_pos=new_event['groundDuel.opponent.position'] 
+        new_event_2['groundDuel.opponent.name'] = opponent
+        new_event_2['groundDuel.opponent.position'] = opp_position
+        dueltype = new_event['groundDuel.duelType']
+        new_event_2['groundDuel.duelType'] = 'defensive_duel' if (dueltype=='dribble') else ('offensive_duel' if dueltype=='defensive_duel' else 'defensive_duel')
+        new_event_2['groundDuel.keptPossession'] = None if ('defensive_duel' in newsecondary) else (False if stopped_prog==True else True)
+        new_event_2['groundDuel.stoppedProgress'] = None if ('offensive_duel' in newsecondary) else (False if keptPoss==True else True)
+        new_event_2['groundDuel.recoveredPossession'] = new_event_2['groundDuel.stoppedProgress']
+        new_event_2['groundDuel.progressedWithBall'] = new_event_2['groundDuel.keptPossession']
+
+    new_event_2['type.secondary']=newsecondary
+    new_event_2['team.name']=opp_team
+    new_event_2['team.formation']=opp_formation
+    new_event_2['opponentTeam.name']=team
+    new_event_2['opponentTeam.formation']=formation
+    new_event_2['team.formation']=opp_formation
+    new_event_2['player.name']=player
+    new_event_2['player.position']=player_pos
     
     return new_event_2
 
+def get_goalkeeper_coordinates(df, minindex, maxindex, keeperA, keeperB):
+    index=minindex
+    keeper=keeperA[0] if (df['team_name'].iloc[index]==keeperB[1]) else keeperB[0]
+    while(index<maxindex):
+        if(keeper==df['player_name'].iloc[index]):
+            return location_transform(df['pos_x005F_x'].iloc[index], df['pos_y'].iloc[index])
+        index+=1
+
+    return np.nan, np.nan
+
+def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y):    
+    #to do: correct timestamps
+
+    new_event_2=new_event
+    opponent=new_event['player.name']
+    opp_position=new_event['player.position']
+    opp_team=new_event['team.name']
+    opp_formation=new_event['team.formation']
+    team=new_event['opponentTeam.name']
+    formation=new_event['opponentTeam.formation']
+    goalkeeper_name= keeperA[0] if opp_team==keeperA[1] else keeperB[0]
+
+    
+    newsecondary = []
+
+    #set new secondary tags
+    if ('goal' in new_event['type.secondary']):
+        newsecondary+=['conceded_goal']
+    else:
+        newsecondary+=['save'] #no supersaves yet
+    
+    new_event_2['type.primary']='shot_against'
+    new_event_2['type.secondary']=newsecondary
+    new_event_2['location.x']=keepercoord_x
+    new_event_2['location.y']=keepercoord_y
+    new_event_2['type.secondary']=newsecondary
+    new_event_2['team.name']=opp_team
+    new_event_2['team.formation']=opp_formation
+    new_event_2['opponentTeam.name']=team
+    new_event_2['opponentTeam.formation']=formation
+    new_event_2['team.formation']=opp_formation
+    new_event_2['player.name']=goalkeeper_name
+    new_event_2['player.position']='GK'
+
+    #set the other categories to nan
+    new_event_2['possession.startLocation.x']=np.nan
+    new_event_2['shot.bodyPart']=np.nan
 
 
-def create_second_shot_event(new_event):
-    return 0
+    return new_event_2
