@@ -176,7 +176,7 @@ def calculate_angle(x,y,destx,desty):
     dy=desty-y
     angle = math.atan2(dy, dx)
     angle= math.degrees(angle)
-    return angle
+    return round(angle,1)
 
 def isinpenaltybox(x,y):
     newx,newy = location_transform(x,y)
@@ -308,7 +308,22 @@ def get_possession_attack(df, ind, withshot, withshotongoal, goal, flank):
                 flank = flang
                 return withshot, withshotongoal, goal, flank
             
+def getformations(dataframe): 
+    df=dataframe['action_name']
+    dft=dataframe['team_name']
+    list=[]
+    team=[]
+    for i in range(4):
+        x=df.iloc[i]
+        teams = dft.iloc[i]
+        if ('2'<x[0]<'6'):
+            list+=[x]
+            team+=[teams]
 
+    team1 = [team[0], list[0]]
+    team2 = [team[1], list[1]]
+            
+    return team1, team2
 
 def time_transform(sec):
     t=timedelta(seconds=sec)
@@ -327,7 +342,7 @@ def get_formation(team, formationlist, teamlist):
 def location_transform(x,y):
     new_x = x*100/105
     new_y = y*-100/68+100
-    return new_x,new_y
+    return round(new_x,1),round(new_y,1)
     
 
 #attribute functions
@@ -363,8 +378,10 @@ def get_period(df, index):
         return "1H"
     return "2H"
 
-def get_time(df, index):
+def get_time(df, index, period):
     sec = df['second'].iloc[index]
+    if(period=='2H'):
+        sec=sec+2700   
     min = int(sec/60)
     second = int(sec%60)
     return min, second, time_transform(sec)
@@ -450,8 +467,9 @@ def setnewpossession(df, index):
 def get_primary_type (df, index):
     action = df['action_name'].iloc[index]
     standart = df['standart_name'].iloc[index]
+    t=df['second'].iloc[index]
     if standart in standart_events:
-        if (index>0):
+        if (t>0):
             return standart_transform(standart)
     if action =='Clearance':
         return "clearance"
@@ -586,7 +604,7 @@ def check_touch_secondaries(df,index, action, secondary):
     if (action=='Dribbling'):
         secondary+=['carry']
 
-    return secondary #to do
+    return secondary
 
 
 
@@ -600,7 +618,7 @@ def get_secondary_type(df, index, primary, secondary):
     if action in shotassistlist:
         secondary+=["shot_assist"]
 
-    if primary!='infraction' and ((action in losslist) or possession_status=='End'):
+    if primary!='infraction' and primary!='game_interruption' and ((action in losslist) or possession_status=='End'):
         secondary+=["loss"]
 
     if action in opplist:
@@ -654,7 +672,7 @@ def get_event_type(df, index):
 
 
 def create_second_duel_event(new_event, keptPoss, stopped_prog, current_possession,poss_types, withshot,withshotongoal, withgoal, flank, newposs, ind):
-    new_event_2=new_event
+    new_event_2=new_event.copy()
     opponent=new_event['player.name']
     opp_position=new_event['player.position']
     opp_team=new_event['team.name']
@@ -758,14 +776,12 @@ def get_goalkeeper_coordinates(df, minindex, maxindex, keeperA, keeperB):
 def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y):    
     #to do: correct timestamps
 
-    new_event_2=new_event
-    opponent=new_event['player.name']
-    opp_position=new_event['player.position']
+    new_event_2=new_event.copy()
     opp_team=new_event['team.name']
     opp_formation=new_event['team.formation']
     team=new_event['opponentTeam.name']
     formation=new_event['opponentTeam.formation']
-    goalkeeper_name= keeperA[0] if opp_team==keeperA[1] else keeperB[0]
+    goalkeeper_name= keeperB[0] if opp_team==keeperA[1] else keeperA[0]
 
     
     newsecondary = []
