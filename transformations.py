@@ -1,10 +1,11 @@
+#this file has all the necessary transformation functions for the wyscout entries. 
 import pandas as pd
 import cmath
 import numpy as np
 from datetime import timedelta
 import math
 
-#parameter lists
+#action lists (might be incomplete)
 
 shotlist = ['Shot into the bar/post',
     'Blocked shot',
@@ -133,7 +134,8 @@ accurat_pass=[
     'Non attacking pass accurate',
     'Assist'
 ]
-#subfunctions
+
+#helper functions
 def isshot (action):
     if action in shotlist:
         return True
@@ -174,7 +176,7 @@ def calculate_angle(x,y,destx,desty):
     dy=desty-y
     angle = math.atan2(dy, dx)
     angle= math.degrees(angle)
-    return round(angle,1)
+    return int(round(angle,0))
 
 def isinpenaltybox(x,y):
     newx,newy = location_transform(x,y)
@@ -191,6 +193,26 @@ def isaccurate_pass(action):
     if (action in accurat_pass):
         return True
     return False
+
+def is_prog_pass(x,destx):
+    dx=destx-x
+
+    if(x<=52.5):
+        if(destx<=52.5):
+            if(dx>=30):
+                return True
+            else:
+                return False
+        else:
+            if(dx>=15):
+                return True
+            else:
+                return False
+    else:
+        if(dx>=10):
+            return True
+        else:
+            return False
 
 def position_transform(instat_position, formation):
     defenders=formation[0]
@@ -255,56 +277,6 @@ def position_transform(instat_position, formation):
         case _:
             print(instat_position)
             raise Exception("position could not be found")
-        
-
-
-
-
-
-def get_possession_type(df, ind, list):
-    t = df['standart_name'].iloc[ind]
-    t2 = df['attack_type_name'].iloc[ind]
-    match t:
-        case "Direct free kick":
-            list+=["direct_free_kick"]
-        case "Corner":
-            list+=["corner"]
-        case "Throw-in":
-            list+=["throw-in"]
-        case "Penalty":
-            list+=["penalty"]
- 
-    match t2:
-        case "Counter-attack":
-            list+=["counterattack", "attack"]
-        case None:
-            return list
-        case _:
-            list+=["attack"]
-    return list
-
-def get_possession_attack(df, ind, withshot, withshotongoal, goal, flank):
-    t2 = df['attack_type_name'].iloc[ind]
-    action = df['action_name'].iloc[ind]
-    flang = df['attack_flang_name'].iloc[ind]
-    
-    match t2:
-        case None:
-            return withshot, withshotongoal, goal, flank
-        case _:
-            if(np.isnan(withshot)):
-                withshot=withshotongoal=goal=False
-                flank = flang
-                return withshot, withshotongoal, goal, flank
-            else:
-                if (action in shotlist):
-                    withshot=True
-                if(action in ontarget):
-                    withshotongoal=True
-                if(action=='Goal'):
-                    goal=True
-                flank = flang
-                return withshot, withshotongoal, goal, flank
             
 def getformations(dataframe): 
     df=dataframe['action_name']
@@ -330,7 +302,6 @@ def time_transform(sec):
     return str(t)+'.000'
 
 
-
 def get_formation(team, formationlist, teamlist):
     if (team==teamlist[0]):
         return formationlist[0]
@@ -342,9 +313,6 @@ def location_transform(x,y):
     new_y = y*-100/68+100
     return round(new_x,1),round(new_y,1)
     
-
-#attribute functions
-
 def get_keepers(df):
     index=0
     counter=0
@@ -359,6 +327,7 @@ def get_keepers(df):
             counter+=1
         index+=1
     return [lp[0],lt[0]],[lp[1],lt[1]]
+
 
 def bodypart_transform(bodypart):
     if (bodypart=='Head' or bodypart=='Hand'):
@@ -411,6 +380,8 @@ def get_pass_recipient(df, ind):
     return rec, position
 
 
+
+#function for possessions
 def newposs(df, minindex, maxindex):
     ind=minindex
     if (df['possession_time'].iloc[ind]>0):
@@ -423,6 +394,50 @@ def newposs(df, minindex, maxindex):
     
     return False, ind
 
+def get_possession_type(df, ind, list):
+    t = df['standart_name'].iloc[ind]
+    t2 = df['attack_type_name'].iloc[ind]
+    match t:
+        case "Direct free kick":
+            list+=["direct_free_kick"]
+        case "Corner":
+            list+=["corner"]
+        case "Throw-in":
+            list+=["throw-in"]
+        case "Penalty":
+            list+=["penalty"]
+ 
+    match t2:
+        case "Counter-attack":
+            list+=["counterattack", "attack"]
+        case None:
+            return list
+        case _:
+            list+=["attack"]
+    return list
+
+def get_possession_attack(df, ind, withshot, withshotongoal, goal, flank):
+    t2 = df['attack_type_name'].iloc[ind]
+    action = df['action_name'].iloc[ind]
+    flang = df['attack_flang_name'].iloc[ind]
+    
+    match t2:
+        case None:
+            return withshot, withshotongoal, goal, flank
+        case _:
+            if(np.isnan(withshot)):
+                withshot=withshotongoal=goal=False
+                flank = flang
+                return withshot, withshotongoal, goal, flank
+            else:
+                if (action in shotlist):
+                    withshot=True
+                if(action in ontarget):
+                    withshotongoal=True
+                if(action=='Goal'):
+                    goal=True
+                flank = flang
+                return withshot, withshotongoal, goal, flank
 
 def setnewpossession(df, index):
     poss_types=[]
@@ -461,7 +476,7 @@ def setnewpossession(df, index):
 
 
 
-
+#functions to get the primary/secondary tag
 def get_primary_type (df, index):
     action = df['action_name'].iloc[index]
     standart = df['standart_name'].iloc[index]
@@ -512,6 +527,7 @@ def check_duel_secondaries(df, index, action, secondary):
 
     return secondary
 
+
 def check_pass_secondaries(df, index, action, secondary):
     length= df['len'].iloc[index]
     posx=df['pos_x005F_x'].iloc[index]
@@ -541,6 +557,8 @@ def check_pass_secondaries(df, index, action, secondary):
         secondary+=["pass_into_penalty_area"]
 
     if not (np.isnan(destx)):
+        if(is_prog_pass(posx,destx)):
+            secondary+=['progressive_pass']
         if (action=='Crosses accurate' and iswithin20meters(destx,desty)):
             secondary+=['deep_completed_cross']
             if('deep_completion' in secondary):
@@ -575,6 +593,8 @@ def check_shot_secondaries(df,index, action, secondary):
         secondary+=["head_shot"]
     if (action=='Goal'):
         secondary+=["goal"]
+    if(action=='Supersaves'):
+        secondary+=['save_with_reflex']
     return secondary 
 
 
@@ -603,7 +623,6 @@ def check_touch_secondaries(df,index, action, secondary):
         secondary+=['carry']
 
     return secondary
-
 
 
 def get_secondary_type(df, index, primary, secondary):
@@ -668,7 +687,7 @@ def get_event_type(df, index):
 
 
 
-
+#functions for coupled events (shot_against, duel)
 def create_second_duel_event(new_event, keptPoss, stopped_prog, current_possession,poss_types, withshot,withshotongoal, withgoal, flank, newposs, ind):
     new_event_2=new_event.copy()
     opponent=new_event['player.name']
@@ -761,6 +780,7 @@ def create_second_duel_event(new_event, keptPoss, stopped_prog, current_possessi
     
     return new_event_2
 
+
 def get_goalkeeper_coordinates(df, minindex, maxindex, keeperA, keeperB):
     index=minindex
     keeper=keeperA[0] if (df['team_name'].iloc[index]==keeperB[1]) else keeperB[0]
@@ -771,7 +791,7 @@ def get_goalkeeper_coordinates(df, minindex, maxindex, keeperA, keeperB):
 
     return np.nan, np.nan
 
-def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y):    
+def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y, relfexsave):    
     #to do: correct timestamps
 
     new_event_2=new_event.copy()
@@ -788,7 +808,9 @@ def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keeperc
     if ('goal' in new_event['type.secondary']):
         newsecondary+=['conceded_goal']
     else:
-        newsecondary+=['save'] #no supersaves yet
+        if(relfexsave):
+            newsecondary+=['save_with_reflex']
+        newsecondary+=['save']
     
     new_event_2['type.primary']='shot_against'
     new_event_2['type.secondary']=newsecondary

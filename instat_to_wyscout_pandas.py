@@ -10,6 +10,7 @@ passheight=groundduel_take_on=ground_side=None
 postshotxg=shotxg=shotgoalzone=possessionattackxg=aerialduelheight=aerialFirsttouch=aerialdueloppheight=np.nan
 carry_x=carry_y=carry_prog=possessioneventsNumber=np.nan
 
+#function for creating a single event
 def create_event(instat, ind):
     global current_possession,poss_types, withshot,withshotongoal, withgoal, flank
     
@@ -33,6 +34,7 @@ def create_event(instat, ind):
     keptPoss=None if ('defensive_duel' in typesecondary) else (False if possession=='Transition of possession' else True)
     stopped_prog=None if ('offensive_duel' in typesecondary) else (True if possession=='Transition of possession' else False)
     keepercoord_x, keepercoord_y=get_goalkeeper_coordinates(instat, ind, index_instat, keeperA, keeperB)
+    reflexsave=False
 
     #passing
     if not (pd.isna(instat["pos_dest_x005F_x"].iloc[ind])) and typeprimary!='shot':
@@ -52,6 +54,9 @@ def create_event(instat, ind):
         bodypart=bodypart_transform(instat['body_name'].iloc[ind])
         isgoal= True if 'goal' in typesecondary else False
         isontarget= True if (action=='Shot on target' or action == 'Goal') else False
+        if('save_with_reflex' in typesecondary):
+            typesecondary.remove('save_with_reflex')
+            reflexsave=True
     else:
         bodypart=isgoal=isontarget=goalkeeper=np.nan
 
@@ -211,7 +216,7 @@ def create_event(instat, ind):
         new_event_2=create_second_duel_event(new_event, keptPoss, stopped_prog, current_possession,poss_types, withshot,withshotongoal, withgoal, flank, isnewposs,ind)
         return index_instat,[new_event, new_event_2]
     elif (action=='Shot on target' or action=='Goal'):
-        new_event_2=create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y)
+        new_event_2=create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y, reflexsave)
         return index_instat,[new_event, new_event_2]
      
     return index_instat, [new_event]

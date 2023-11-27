@@ -1,9 +1,9 @@
 #to do 
-counterpressing_recovery,progressive_pass,progressive_run,recovery
+counterpressing_recovery,recovery
 
 #potentially doing
 carry, foul_suffered, penalty_conceded_goal, penalty_foul, penalty_goal,penalty_save,
-shot_after_corner,shot_after_free_kick,save_with_reflex
+shot_after_corner,shot_after_free_kick,save_with_reflex,progressive_run
 
 #not doing
 head_pass, dribbled_past_attempt, loose_ball_duel, second_assist,pressing_duel, 

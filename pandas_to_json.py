@@ -21,6 +21,7 @@ def row_transform(row):
         row[category]=reconstruct_cases(row,category)
     return row
 
+#transforms the pandas dataframe to the correct json format
 def pandas_to_json(dataframe, filename):
     df=dataframe.apply(row_transform, axis=1)
 

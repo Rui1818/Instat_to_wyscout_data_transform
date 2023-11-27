@@ -1,7 +1,8 @@
+#this file has all the helper functions for the reconstruction of the original format for the transformation to json
+
 import pandas as pd
 import cmath
 import numpy as np
-
 
 
 def reconstruct_endloc(row):
