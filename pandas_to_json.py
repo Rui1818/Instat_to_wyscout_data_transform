@@ -1,4 +1,3 @@
-from instat_to_wyscout_pandas import *
 from reconstruct import *
 import json
 
@@ -22,7 +21,7 @@ def row_transform(row):
         row[category]=reconstruct_cases(row,category)
     return row
 
-def pands_to_json(dataframe, filename):
+def pandas_to_json(dataframe, filename):
     df=dataframe.apply(row_transform, axis=1)
 
     dropping = ['type.', 'groundDuel.', 'aerialDuel.', 'shot.', 'location.', 'pass.', 'infraction.', 'player.', 'team.', 'possession.', 'opponentTeam.', 'carry.']
@@ -47,3 +46,4 @@ def pands_to_json(dataframe, filename):
     # Save the JSON data to a file
     with open(file_path, 'w') as json_file:
         json_file.write(finaljson)
+
