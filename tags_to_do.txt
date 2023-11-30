@@ -1,15 +1,17 @@
 #to do 
-counterpressing_recovery,recovery
+
 
 #potentially doing
 carry, foul_suffered, penalty_conceded_goal, penalty_foul, penalty_goal,penalty_save,
-shot_after_corner,shot_after_free_kick,save_with_reflex,progressive_run
+shot_after_corner,shot_after_free_kick,progressive_run,counterpressing_recovery,recovery
 
 #not doing
 head_pass, dribbled_past_attempt, loose_ball_duel, second_assist,pressing_duel, 
 linkup_play,shot_after_throw_in,smart_pass, third_assist, through_pass,
 whistle, under_pressure
 
+#checkup
+update formations
     
 
 

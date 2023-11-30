@@ -4,20 +4,22 @@ import numpy as np
 from transformations import *
 
 #set all unknown attributes
-id=matchId=videoTimestamp=relatedEventId=teamId=opponentTeamId=playerId=passrecipientId=possessionId = 0
+relatedEventId=teamId=opponentTeamId=playerId=passrecipientId=possessionId = 0
 possessioneventIndex=possessionteamId=groundDuelopponentId=groundDuelrelatedDuelId=infractionopponentId=shotgoalkeeperActionId=shotgoalkeeperId=aerialDuelopponentId=aerialDuelrelatedDuelId = 0
 passheight=groundduel_take_on=ground_side=None
 postshotxg=shotxg=shotgoalzone=possessionattackxg=aerialduelheight=aerialFirsttouch=aerialdueloppheight=np.nan
 carry_x=carry_y=carry_prog=possessioneventsNumber=np.nan
 
 #function for creating a single event
-def create_event(instat, ind):
+def create_event(instat, ind, wyscout):
     global current_possession,poss_types, withshot,withshotongoal, withgoal, flank
+    period=get_period(instat,ind)
     
-    index_instat, typeprimary, typesecondary = get_event_type(instat, ind)
+    index_instat, typeprimary, typesecondary = get_event_type(instat, ind, teamA, teamB,keeperA,keeperB, period)
     action = instat['action_name'].iloc[ind]
     #setup every attribute
-    period=get_period(instat,ind)
+    id=instat['id'].iloc[ind]
+    videoTimestamp=instat['second'].iloc[ind]
     minute, second, matchTimestamp = get_time(instat, ind, period)
     locx, locy = get_location(instat, ind)
     teamname = instat['team_name'].iloc[ind]
@@ -52,11 +54,21 @@ def create_event(instat, ind):
     if (isshot(action)):
         goalkeeper = keeperA[0] if (teamname!=keeperA[1]) else keeperB[0]
         bodypart=bodypart_transform(instat['body_name'].iloc[ind])
-        isgoal= True if 'goal' in typesecondary else False
+        isgoal= True if action=='Goal' else False
         isontarget= True if (action=='Shot on target' or action == 'Goal') else False
         if('save_with_reflex' in typesecondary):
             typesecondary.remove('save_with_reflex')
             reflexsave=True
+        if(typeprimary=='shot'):
+            num=isshotafter(matchTimestamp, wyscout)
+            if(num!=0):
+                if(num==1):
+                    typesecondary+=['shot_after_corner']
+                elif(num==2):
+                    typesecondary+=['shot_after_free_kick']
+                elif(num==3):
+                    typesecondary+=['shot_after_throw_in']
+            
     else:
         bodypart=isgoal=isontarget=goalkeeper=np.nan
 
@@ -100,6 +112,9 @@ def create_event(instat, ind):
     else:
         aerialopp=aerialopp_pos=groundopp=groundopp_pos =grounddueltype=np.nan 
         ground_stopped_prog=ground_recov_poss =ground_side=groundkeptposs=groundduel_progressed_with_ball=np.nan
+    
+    if(typeprimary=='postmatch_penalty'):
+        typesecondary=[]
 
     #possession
     if (current_possession[5]>ind):
@@ -210,16 +225,18 @@ def create_event(instat, ind):
         "infraction.opponent":np.nan,	
         "location":np.nan
     }
+
+    wyscout = pd.concat([wyscout, pd.DataFrame([new_event])], ignore_index=True)
     
     #check when second event has to be generated
     if (typeprimary=='duel'):
         new_event_2=create_second_duel_event(new_event, keptPoss, stopped_prog, current_possession,poss_types, withshot,withshotongoal, withgoal, flank, isnewposs,ind)
-        return index_instat,[new_event, new_event_2]
-    elif (action=='Shot on target' or action=='Goal'):
+        wyscout= pd.concat([wyscout, pd.DataFrame([new_event_2])], ignore_index=True)
+    elif (action=='Shot on target' or action=='Goal' or typeprimary=='postmatch_penalty'):
         new_event_2=create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y, reflexsave)
-        return index_instat,[new_event, new_event_2]
+        wyscout= pd.concat([wyscout, pd.DataFrame([new_event_2])], ignore_index=True)
      
-    return index_instat, [new_event]
+    return index_instat, wyscout
 
 
 def pandas_transform(path):
@@ -228,6 +245,7 @@ def pandas_transform(path):
     global teamA
     global teamB
     global current_possession,poss_types, withshot,withshotongoal, withgoal, flank
+    global matchId
     #instatiate empty dataframe with wyscout format
     template_path='template.csv'
     df=pd.read_csv(template_path)
@@ -236,20 +254,23 @@ def pandas_transform(path):
     #load instat file
     instat_path = path
     instatdf=pd.read_xml(instat_path)
+    matchId=getmatchId(instatdf)
     instatdf=instatdf.iloc[2:,:]
-    instatdf.drop(columns=['column','number','dl', 'id', 'uid', 'action_id', 'player_id', 'team_id', 'standart_id', 'ts', 'position_id', 'opponent_id', 'opponent_team_id','opponent_position_id', 'zone_id', 'zone_dest_id', 'possession_id', 'possession_team_id', 'possession_team_id', 'attack_status_id', 'attack_type_id', 'attack_team_id', 'body_id' ], inplace=True)
+    instatdf.drop(columns=['column','number','dl', 'uid', 'action_id', 'player_id', 'team_id', 'standart_id', 'ts', 'position_id', 'opponent_id', 'opponent_team_id','opponent_position_id', 'zone_id', 'zone_dest_id', 'possession_id', 'possession_team_id', 'possession_team_id', 'attack_status_id', 'attack_type_id', 'attack_team_id', 'body_id' ], inplace=True)
     #get the goalkeepers
     keeperA,keeperB= get_keepers(instatdf)
 
     #remove unnecessairy rows
-    mask = (instatdf['second']==0.00) & (~instatdf['player_name'].isna()) & (instatdf['action_name']!='Attacking pass accurate')
+    mask = (instatdf['second']==0.00) & (~instatdf['player_name'].isna()) & (instatdf['action_name']!='Attacking pass accurate')&(instatdf.index<100)
     instatdf = instatdf[~mask]
     todrop = ['line-up', 'Substitute player', '1st half','2nd half', 'Players, that created offside trap']
     mask = ~instatdf['action_name'].isin(todrop)
     instatdf = instatdf[mask]
     teamA,teamB=getformations(instatdf)
 
-    mask = (instatdf['second']==0)&(instatdf['action_name']!='Attacking pass accurate')
+    instatdf=instatdf.reset_index()
+
+    mask = (instatdf['second']==0)&(instatdf['action_name']!='Attacking pass accurate')&(instatdf.index<200)
     instatdf = instatdf[~mask] 
     #ready for wyscout transformation
 
@@ -258,9 +279,7 @@ def pandas_transform(path):
 
     index = 0   
     while (True):
-        index, newevents = create_event(instatdf, index)
-        for event in newevents:
-            wyscoutdf = pd.concat([wyscoutdf, pd.DataFrame([event])], ignore_index=True)
+        index, wyscoutdf = create_event(instatdf, index, wyscoutdf)
         if(instatdf['action_name'].iloc[index]=='Match end'):
             break
         

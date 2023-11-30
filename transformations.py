@@ -2,7 +2,7 @@
 import pandas as pd
 import cmath
 import numpy as np
-from datetime import timedelta
+from datetime import timedelta, datetime
 import math
 
 #action lists (might be incomplete)
@@ -39,10 +39,7 @@ primary_events=[
     'Unsuccessful dribbling',
     'Ball out of the field',
     'Deferred foul',
-    'Red card',
     'Foul',
-    'Yellow card',
-    'RC for two YC',
     'Pass interceptions',
     'Shots blocked',
     'Cross interception',
@@ -56,6 +53,7 @@ primary_events=[
     'Shot on target',
     'Wide shot',
     'Shot blocked by field player',
+    'Shot into the bar/post',
     'Goal', 
     'Assist'
 ]
@@ -81,10 +79,7 @@ gameinterruption_events=[
 
 infraction_events = [
     'Deferred foul',
-    'Red card',
-    'Foul',
-    'Yellow card',
-    'RC for two YC'
+    'Foul'
 ]
 interception_events = [
     'Pass interceptions',
@@ -105,7 +100,8 @@ shot_events = [
     'Blocked shot',
     'Shot on target',
     'Wide shot',
-    'Shot blocked by field player', #'Shot into the bar/post',
+    'Shot blocked by field player', 
+    'Shot into the bar/post',
     'Goal'
 ]
 
@@ -136,6 +132,14 @@ accurat_pass=[
 ]
 
 #helper functions
+def getmatchId(df):
+    ind=0
+    id = df['id'].iloc[0]
+    while(np.isnan(id)):
+        ind+=1
+        id = df['id'].iloc[ind]
+    return id
+
 def isshot (action):
     if action in shotlist:
         return True
@@ -343,12 +347,25 @@ def get_period(df, index):
     per = df['half'].iloc[index]
     if (per==1):
         return "1H"
-    return "2H"
+    elif (per==2):
+        return "2H"
+    elif(per==3):
+        return "1E"
+    elif(per==4):
+        return "2E"
+    else:
+        return "P"
 
 def get_time(df, index, period):
     sec = df['second'].iloc[index]
     if(period=='2H'):
         sec=sec+2700   
+    elif(period=='1E'):
+        sec=sec+5400
+    elif(period=='2E'):
+        sec=sec+6300
+    elif(period=='P'):
+        sec=sec+7200
     min = int(sec/60)
     second = int(sec%60)
     return min, second, time_transform(sec)
@@ -481,6 +498,8 @@ def get_primary_type (df, index):
     action = df['action_name'].iloc[index]
     standart = df['standart_name'].iloc[index]
     t=df['second'].iloc[index]
+    if action in infraction_events:
+        return "infraction"
     if standart in standart_events:
         if (t>0):
             return standart_transform(standart)
@@ -490,8 +509,6 @@ def get_primary_type (df, index):
         return "duel"
     if action in gameinterruption_events:
         return "game_interruption"
-    if action in infraction_events:
-        return "infraction"
     if action in interception_events:
         return "interception"
     if action == 'Offside':
@@ -508,6 +525,10 @@ def get_primary_type (df, index):
         print('index: '+index+', ')
         print(df['action_name'].iloc[index])
         raise Exception("no primary event was found")
+    
+
+    
+    
     
 def check_duel_secondaries(df, index, action, secondary):
     possessionteam = df['possession_team_name'].iloc[index]
@@ -597,8 +618,23 @@ def check_shot_secondaries(df,index, action, secondary):
         secondary+=['save_with_reflex']
     return secondary 
 
+def check_penalty_secondaries(df,index, action, secondary):
+    if(action=='Goal'):
+        secondary+=['penalty_goal']
+        secondary+=['goal']
+    if(action=='Supersaves'):
+        secondary+=['save_with_reflex']
+    return secondary
+
+def check_postmatchpenalty_secondaries(df, index, action, secondary):
+    if(action=='Supersaves'):
+        secondary+=['save_with_reflex']
+    return secondary
 
 def check_infraction_secondaries(df,index, action, secondary):
+    ispen=df['standart_name'].iloc[index]
+    if(ispen=='Penalty'):
+        secondary+=['penalty_foul']
     if (action=='Foul' or action=='Deferred foul'):
         secondary+=["foul"]
     if(action=='Yellow card'):
@@ -635,16 +671,18 @@ def get_secondary_type(df, index, primary, secondary):
     if action in shotassistlist:
         secondary+=["shot_assist"]
 
-    if primary!='infraction' and primary!='game_interruption' and ((action in losslist) or possession_status=='End'):
+    if primary!='infraction' and primary!='game_interruption' and primary!='penalty' and ((action in losslist) or possession_status=='End'):
         secondary+=["loss"]
 
     if action in opplist:
         secondary+=["opportunity"]
 
-    if primary!='duel' and (isinpenaltybox(posx,posy)):
+    if primary!='duel' and (isinpenaltybox(posx,posy)) and primary!='penalty' and primary!='infraction':
         secondary+=["touch_in_box"]
     #specialized tags
     match primary:
+        case "penalty":
+            secondary=check_penalty_secondaries(df, index, action, secondary)
         case "pass":
             secondary=check_pass_secondaries(df,index, action, secondary)
         case "free_kick":
@@ -661,27 +699,51 @@ def get_secondary_type(df, index, primary, secondary):
             secondary=check_interception_secondaries(df,index, action, secondary)
         case "touch":
             secondary=check_touch_secondaries(df,index, action, secondary)
+        case "postmatch_penalty":
+            secondary=check_postmatchpenalty_secondaries(df, index, action, secondary)
         case _:
             return secondary
 
     return secondary
 
 
-def get_event_type(df, index):
+def updateinformations(df, index, teamA, teamB, keeperA, keeperB):
+    if(df['action_name'].iloc[index]=='Substitution'):
+            
+        ind=index+1
+        while (df['action_name'].iloc[ind]!='Match end' and ind<(index+23)):
+            action=df['action_name'].iloc[ind]
+            if(action=='GK'):
+                team=df['team_name'].iloc[ind]
+                if(keeperA[1]==team):
+                    keeperA[0]=df['player_name'].iloc[ind]
+                else:
+                    keeperB[0]=df['player_name'].iloc[ind]
+            if(action[0].isnumeric() and action[2].isnumeric()):
+                team=df['team_name'].iloc[ind]
+                if(team==teamA[0]):
+                    teamA[1]=action
+                else:
+                    teamB[1]=action
+            ind+=1
+
+
+
+def get_event_type(df, index, teamA, teamB,keeperA, keeperB, period):
     action = df['action_name'].iloc[index]
     if (action=='Match end'):
         raise Exception ("event match end should not been reached in this state")
     
-    primary = get_primary_type(df, index)
+    primary = get_primary_type(df, index) if (period!='P') else 'postmatch_penalty'
     secondary = get_secondary_type(df, index, primary, [])
     
     index+=1
     action = df['action_name'].iloc[index]
     while(action not in primary_events):  #have to check penalties
+        updateinformations(df, index, teamA, teamB, keeperA, keeperB)
         secondary = get_secondary_type(df, index,primary, secondary)
         index+=1
         action=df['action_name'].iloc[index]
-
     
     return index, primary, list(set(secondary))
 
@@ -791,7 +853,7 @@ def get_goalkeeper_coordinates(df, minindex, maxindex, keeperA, keeperB):
 
     return np.nan, np.nan
 
-def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y, relfexsave):    
+def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y, reflexsave):    
     #to do: correct timestamps
 
     new_event_2=new_event.copy()
@@ -805,14 +867,26 @@ def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keeperc
     newsecondary = []
 
     #set new secondary tags
-    if ('goal' in new_event['type.secondary']):
-        newsecondary+=['conceded_goal']
+    if(new_event['type.primary']!='postmatch_penalty'):
+        new_event_2['type.primary']='shot_against'
+        if ('goal' in new_event['type.secondary']):
+            newsecondary+=['conceded_goal']
+            if('penalty_goal' in new_event['type.secondary']):
+                newsecondary+=['penalty_conceded_goal']
+        else:
+            if(reflexsave):
+                newsecondary+=['save_with_reflex']
+                if(new_event['type.primary']=='penalty'):
+                    newsecondary+=['penalty_save']
+            newsecondary+=['save']
     else:
-        if(relfexsave):
-            newsecondary+=['save_with_reflex']
-        newsecondary+=['save']
+        new_event_2['type.primary']='postmatch_penalty_faced'
+        if(new_event['shot.isGoal']):
+            newsecondary+=['conceded_postmatch_penalty']
+        elif(reflexsave):
+            newsecondary+=['postmatch_penalty_saved']
     
-    new_event_2['type.primary']='shot_against'
+    
     new_event_2['type.secondary']=newsecondary
     new_event_2['location.x']=keepercoord_x
     new_event_2['location.y']=keepercoord_y
@@ -831,3 +905,23 @@ def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keeperc
 
 
     return new_event_2
+
+
+
+def isshotafter(timestamp, wyscout):
+    format_str = "%H:%M:%S.%f" 
+    formattedtimestamp = datetime.strptime(timestamp, format_str)
+    ind=wyscout.index[-1]
+    time = datetime.strptime(wyscout['matchTimestamp'].iloc[ind], format_str)
+    ty = wyscout['type.primary'].iloc[ind]
+    delta=timedelta(seconds=14)
+    while(ind>0 and formattedtimestamp-time<delta):
+        if(ty=='corner'):
+            return 1
+        elif(ty=='free_kick'):
+            return 2
+        elif(ty=='throw-in'):
+            return 3
+        ind-=1
+        time=datetime.strptime(wyscout['matchTimestamp'].iloc[ind], format_str)
+    return 0
