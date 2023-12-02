@@ -38,6 +38,12 @@ def create_event(instat, ind, wyscout):
     keepercoord_x, keepercoord_y=get_goalkeeper_coordinates(instat, ind, index_instat, keeperA, keeperB)
     reflexsave=False
 
+    #set recoverytag
+    if(ind>0):
+        typesecondary=isrecovery(possteamname, wyscout, typesecondary, matchTimestamp)
+    
+    
+
     #passing
     if not (pd.isna(instat["pos_dest_x005F_x"].iloc[ind])) and typeprimary!='shot':
         passaccurate=isaccurate_pass(action)
@@ -73,12 +79,13 @@ def create_event(instat, ind, wyscout):
         bodypart=isgoal=isontarget=goalkeeper=np.nan
 
     #infraction
-    if(action=='infraction'):
+    if(typeprimary=='infraction'):
         isyellow=True if ('yellow_card' in typesecondary) else False
         isred = True if ('red_card' in typesecondary) else False
         infraction_type = 'regular_foul' if action!='Deferred foul' else 'late_card_foul' #there are more types of fouls
         infractionopp = instat['opponent_name'].iloc[ind]
         infractionopp_pos = position_transform(instat['opponent_position_name'].iloc[ind], oppteamformation)
+        foulsuffered(wyscout, playername)
     else:
         isyellow=isred=infraction_type=infractionopp=infractionopp_pos=np.nan
 

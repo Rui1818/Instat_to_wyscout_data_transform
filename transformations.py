@@ -281,6 +281,15 @@ def position_transform(instat_position, formation):
         case _:
             print(instat_position)
             raise Exception("position could not be found")
+
+def adjustformation(formation):
+    match formation:
+        case '4-4-2 diamond':
+            return '4-3-1-2'
+        case '4-4-2 classic':
+            return '4-4-2'
+        case _:
+            return formation
             
 def getformations(dataframe): 
     df=dataframe['action_name']
@@ -294,8 +303,8 @@ def getformations(dataframe):
             list+=[x]
             team+=[teams]
 
-    team1 = [team[0], list[0]]
-    team2 = [team[1], list[1]]
+    team1 = [team[0], adjustformation(list[0])]
+    team2 = [team[1], adjustformation(list[1])]
             
     return team1, team2
 
@@ -925,3 +934,39 @@ def isshotafter(timestamp, wyscout):
         ind-=1
         time=datetime.strptime(wyscout['matchTimestamp'].iloc[ind], format_str)
     return 0
+
+def isrecovery(possteam,wyscout,secondary, timestamp):
+    ind=wyscout.index[-1]
+    format_str = "%H:%M:%S.%f" 
+    formattedtimestamp = datetime.strptime(timestamp, format_str)
+    time = datetime.strptime(wyscout['matchTimestamp'].iloc[ind], format_str)
+    wyposs = wyscout['possession.team.name'].iloc[ind]
+    primary=wyscout['type.primary'].iloc[ind]
+    delta=timedelta(seconds=5)
+    if (len(wyposs)>0) and (len(possteam)>0):
+        if(possteam!=wyposs and primary!='game_interruption' and primary!='shot' and primary!='shot_against'):
+            secondary+=['recovery']
+            if(formattedtimestamp-time<delta):
+                secondary+=['counterpressing_recovery']
+
+    return secondary
+
+def foulsuffered(wyscout, name):
+    ind=wyscout.index[-1]
+    oppname=wyscout['player.name'].iloc[ind]
+    primary=wyscout['type.primary'].iloc[ind]
+    secondary=wyscout['type.secondary'].iloc[ind].copy()
+    ind2=ind-1
+    if(primary=='duel'):
+        if(oppname!=name):
+            secondary+=['foul_suffered']
+            print('reached')
+            wyscout['type.secondary'].iloc[ind]=secondary
+        elif(wyscout['player.name'].iloc[ind2]!=name):
+            if(wyscout['player.name'].iloc[ind2]!=name):
+                secondary+=['foul_suffered']
+                wyscout['type.secondary'].iloc[ind2]=secondary
+
+
+   
+        
