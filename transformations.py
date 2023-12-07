@@ -37,6 +37,7 @@ primary_events=[
     'Air challenge',
     'Successful dribbling',
     'Unsuccessful dribbling',
+    'Dribbling',
     'Ball out of the field',
     'Deferred foul',
     'Foul',
@@ -166,7 +167,7 @@ def standart_transform(standart):
         case 'Corner':
             return "corner"
         case 'Throw-in':
-            return "throw-in"
+            return "throw_in"
         case 'Direct free kick':
             return "free_kick"
         case 'Penalty':
@@ -343,7 +344,7 @@ def get_keepers(df):
 
 
 def bodypart_transform(bodypart):
-    if (bodypart=='Head' or bodypart=='Hand'):
+    if (bodypart=='Header' or bodypart=='Hand'):
         return "head_or_other"
     if (bodypart=='Right foot'):
         return "right_foot"
@@ -429,7 +430,7 @@ def get_possession_type(df, ind, list):
         case "Corner":
             list+=["corner"]
         case "Throw-in":
-            list+=["throw-in"]
+            list+=["throw_in"]
         case "Penalty":
             list+=["penalty"]
  
@@ -529,7 +530,7 @@ def get_primary_type (df, index):
     if action in shot_events:
         return "shot"
     if action == "Dribbling":
-        "touch"
+        return "touch"
     else:
         print('index: '+index+', ')
         print(df['action_name'].iloc[index])
@@ -568,6 +569,8 @@ def check_pass_secondaries(df, index, action, secondary):
 
     if (bodypart=='Hand'):
         secondary+=["hand_pass"]
+    if(bodypart=='Head'):
+        secondary+=["head_pass"]
     if (action=='Assist'):
         secondary+=["assist"]
     if (action=='Crosses accurate' or action=='Crosses inaccurate' or action == 'Inaccurate blocked cross'):
@@ -618,7 +621,7 @@ def check_free_kick_secondaries(df,index, action, secondary):
 
 
 def check_shot_secondaries(df,index, action, secondary):
-    bodypart= df['action_name'].iloc[index]
+    bodypart= df['body_name'].iloc[index]
     if (bodypart=='Header'):
         secondary+=["head_shot"]
     if (action=='Goal'):
@@ -686,7 +689,7 @@ def get_secondary_type(df, index, primary, secondary):
     if action in opplist:
         secondary+=["opportunity"]
 
-    if primary!='duel' and (isinpenaltybox(posx,posy)) and primary!='penalty' and primary!='infraction':
+    if (isinpenaltybox(posx,posy)) and (primary=='shot' or primary=='pass' or primary=='touch'):
         secondary+=["touch_in_box"]
     #specialized tags
     match primary:
@@ -929,7 +932,7 @@ def isshotafter(timestamp, wyscout):
             return 1
         elif(ty=='free_kick'):
             return 2
-        elif(ty=='throw-in'):
+        elif(ty=='throw_in'):
             return 3
         ind-=1
         time=datetime.strptime(wyscout['matchTimestamp'].iloc[ind], format_str)

@@ -233,6 +233,14 @@ def create_event(instat, ind, wyscout):
         "location":np.nan
     }
 
+    '''is_gameinterrupt= (wyscout['type.primary'].iloc[-1]=='game_interruption')
+    lastloc=wyscout['location.x'].iloc[-1]
+    lastperiod=wyscout['matchPeriod'].iloc[-1]
+
+    if(is_gameinterrupt and typeprimary!='corner' and typeprimary!='goal_kick' and lastloc>=100 and lastperiod==period):
+        create_goal_kick(wyscout, locx, locy, keeperA, keeperB)'''
+
+
     wyscout = pd.concat([wyscout, pd.DataFrame([new_event])], ignore_index=True)
     
     #check when second event has to be generated
