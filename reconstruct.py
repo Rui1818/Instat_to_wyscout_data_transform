@@ -59,7 +59,7 @@ def reconstruct_cases(row, keyword):
         case "player": 
             return {"id": row['player.id'], "name": row['player.name'], "position": row['player.position']}
         case "pass":
-            if (pd.isna(row['pass.accurate'])):
+            if (pd.isna(row['pass.angle'])):
                 return np.nan
             rec = reconstruct_recipient(row)
             endloc =reconstruct_endloc(row)
@@ -88,7 +88,7 @@ def reconstruct_cases(row, keyword):
             opponent = getopponent_aerial(row)
             return {"opponent": opponent, "firstTouch": row['aerialDuel.firstTouch'], "height": row['aerialDuel.height'], "relatedDuelId": row['aerialDuel.relatedDuelId']}
         case "infraction": 
-            if (pd.isna(row['infraction.yellowCard'])):
+            if (pd.isna(row['infraction.type'])):
                 return np.nan
             opponent = getopponent_infraction(row)
             return {"yellowCard": row['infraction.yellowCard'], "redCard": row['infraction.redCard'], "type": row['infraction.type'], "opponent": opponent}

@@ -15,7 +15,7 @@ def create_event(instat, ind, wyscout):
     global current_possession,poss_types, withshot,withshotongoal, withgoal, flank
     period=get_period(instat,ind)
     
-    index_instat, typeprimary, typesecondary = get_event_type(instat, ind, teamA, teamB,keeperA,keeperB, period)
+    index_instat, typeprimary, typesecondary = get_event_type(instat, ind, teamA, teamB, keeperA, keeperB, period)
     action = instat['action_name'].iloc[ind]
     #setup every attribute
     id=instat['id'].iloc[ind]
@@ -38,9 +38,24 @@ def create_event(instat, ind, wyscout):
     keepercoord_x, keepercoord_y=get_goalkeeper_coordinates(instat, ind, index_instat, keeperA, keeperB)
     reflexsave=False
 
-    #set recoverytag
+    #change primary if needed
     if(ind>0):
-        typesecondary=isrecovery(possteamname, wyscout, typesecondary, matchTimestamp)
+        if(wyscout['type.primary'].iloc[-1]=='infraction' and typeprimary!='free_kick'):
+            temp=typeprimary
+            typeprimary='free_kick'
+            if(temp=='pass'):
+                if('cross' in typesecondary):
+                    typesecondary+=['free_kick_cross']
+                    typesecondary.remove('cross')
+                if('cross_blocked' in typesecondary):
+                    typesecondary+=['free_kick_cross']
+                    typesecondary.remove('cross_blocked')
+            if(temp=='shot'):
+                typesecondary+=['free_kick_shot']
+
+        #set recoverytag
+        if(ind>0):
+            typesecondary=isrecovery(possteamname, wyscout, typesecondary, matchTimestamp)
     
     
 
@@ -232,13 +247,20 @@ def create_event(instat, ind, wyscout):
         "infraction.opponent":np.nan,	
         "location":np.nan
     }
-
-    '''is_gameinterrupt= (wyscout['type.primary'].iloc[-1]=='game_interruption')
-    lastloc=wyscout['location.x'].iloc[-1]
-    lastperiod=wyscout['matchPeriod'].iloc[-1]
-
-    if(is_gameinterrupt and typeprimary!='corner' and typeprimary!='goal_kick' and lastloc>=100 and lastperiod==period):
-        create_goal_kick(wyscout, locx, locy, keeperA, keeperB)'''
+    if (ind>0):
+        #add throw_in or goal kick if needed
+        is_gameinterrupt= (wyscout['type.primary'].iloc[-1]=='game_interruption')
+        lastloc=wyscout['location.x'].iloc[-1]
+        lastperiod=wyscout['matchPeriod'].iloc[-1]
+        
+        
+        if(is_gameinterrupt and typeprimary!='corner' and typeprimary!='goal_kick' and (lastloc==100 or lastloc==0) and lastperiod==period):
+            goalkickevent=create_goal_kick(wyscout, locx, locy, keeperA, keeperB, teamA, teamB, new_event)
+            wyscout = pd.concat([wyscout, pd.DataFrame([goalkickevent])], ignore_index=True)
+        elif(is_gameinterrupt and lastloc<100 and lastloc>0 and typeprimary!='throw_in' and lastperiod==period):
+            lastlocy=wyscout['location.y'].iloc[-1]
+            throwinevent=create_throw_in(lastloc, lastlocy, locx,locy, teamA, teamB, new_event)
+            wyscout = pd.concat([wyscout, pd.DataFrame([throwinevent])], ignore_index=True)
 
 
     wyscout = pd.concat([wyscout, pd.DataFrame([new_event])], ignore_index=True)

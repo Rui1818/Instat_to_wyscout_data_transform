@@ -579,7 +579,7 @@ def check_pass_secondaries(df, index, action, secondary):
         secondary+=["cross_blocked"]
     if (length>45):
         secondary+=["long_pass"]
-    else:
+    elif(length<=45):
         secondary+=["short_or_medium_pass"]
     
     if (action=='Inaccurate key pass' or action=='Accurate key pass'):
@@ -739,8 +739,6 @@ def updateinformations(df, index, teamA, teamB, keeperA, keeperB):
                     teamB[1]=action
             ind+=1
 
-
-
 def get_event_type(df, index, teamA, teamB,keeperA, keeperB, period):
     action = df['action_name'].iloc[index]
     if (action=='Match end'):
@@ -758,8 +756,6 @@ def get_event_type(df, index, teamA, teamB,keeperA, keeperB, period):
         action=df['action_name'].iloc[index]
     
     return index, primary, list(set(secondary))
-
-
 
 #functions for coupled events (shot_against, duel)
 def create_second_duel_event(new_event, keptPoss, stopped_prog, current_possession,poss_types, withshot,withshotongoal, withgoal, flank, newposs, ind):
@@ -971,5 +967,80 @@ def foulsuffered(wyscout, name):
                 wyscout['type.secondary'].iloc[ind2]=secondary
 
 
+
+def create_goal_kick(wyscout, destx, desty, keeperA, keeperB, teamA, teamB, new_event):
+    goalkickevent=new_event.copy()
+    poss_team=new_event['possession.team.name']
+    poss_formation=new_event['possession.team.formation']
+    locx=0.0
+    locy=50.0
+    dx=destx-locx
+    dy=desty-locy
+    angle=calculate_angle(locx,locy,destx,desty)
+    length=math.sqrt(dx*dx+dy*dy)
+    goalkeeper_name= keeperA[0] if poss_team==keeperA[1] else keeperB[0]
+    oppteam=teamB[0] if (poss_team==teamA[0]) else teamA[0]
+    oppformation = teamB[1] if (poss_team==teamA[0]) else teamA[1]
+    accurate=np.nan
+    
+    goalkickevent['type.primary']='goal_kick'
+    goalkickevent['type.secondary']=[]
+    goalkickevent['location.x']=locx
+    goalkickevent['location.y']=locy
+    goalkickevent['team.name']=poss_team
+    goalkickevent['team.formation']=poss_formation
+    goalkickevent['opponentTeam.name']=oppteam
+    goalkickevent['opponentTeam.formation']=oppformation
+    goalkickevent['player.name']=goalkeeper_name
+    goalkickevent['player.position']='GK'
+    goalkickevent['pass.accurate']=accurate
+    goalkickevent['pass.angle']=angle
+    goalkickevent['pass.length']=length
+    goalkickevent['pass.endLocation.x']=destx
+    goalkickevent['pass.endLocation.y']=desty
+
+    #set other categories to nan
+    goalkickevent['shot.bodyPart']=np.nan
+    goalkickevent['groundDuel.duelType']=np.nan
+    goalkickevent['aerialDuel.opponent.name']=np.nan
+    goalkickevent['infraction.type']=np.nan
+    goalkickevent['carry.progression']=np.nan
+
+
+    return goalkickevent
    
-        
+def create_throw_in(lastloc,lastlocy,destx,desty, teamA, teamB, new_event):
+    event=new_event.copy()
+    poss_team=new_event['possession.team.name']
+    poss_formation=new_event['possession.team.formation']
+    oppteam=teamB[0] if (poss_team==teamA[0]) else teamA[0]
+    oppformation = teamB[1] if (poss_team==teamA[0]) else teamA[1]
+    angle=calculate_angle(lastloc,lastlocy,destx,desty)
+    dx=destx-lastloc
+    dy=desty-lastlocy
+    length=math.sqrt(dx*dx+dy*dy)
+
+    event['type.primary']='throw_in'
+    event['type.secondary']=[]
+    event['location.x']=lastloc
+    event['location.y']=lastlocy
+    event['team.name']=poss_team
+    event['team.formation']=poss_formation
+    event['opponentTeam.name']=oppteam
+    event['opponentTeam.formation']=oppformation
+    event['player.name']=np.nan
+    event['player.position']=np.nan
+    event['pass.accurate']=np.nan
+    event['pass.angle']=angle
+    event['pass.length']=length
+    event['pass.endLocation.x']=destx
+    event['pass.endLocation.y']=desty
+
+    #set other categories to nan
+    event['shot.bodyPart']=np.nan
+    event['groundDuel.duelType']=np.nan
+    event['aerialDuel.opponent.name']=np.nan
+    event['infraction.type']=np.nan
+    event['carry.progression']=np.nan
+
+    return event
