@@ -38,9 +38,9 @@ def create_event(instat, ind, wyscout):
     keepercoord_x, keepercoord_y=get_goalkeeper_coordinates(instat, ind, index_instat, keeperA, keeperB)
     reflexsave=False
 
-    #change primary if needed
     if(ind>0):
-        if(wyscout['type.primary'].iloc[-1]=='infraction' and typeprimary!='free_kick'):
+        #change primary if needed
+        if(wyscout['type.primary'].iloc[-1]=='infraction' and typeprimary!='free_kick' and typeprimary!='penalty'):
             temp=typeprimary
             typeprimary='free_kick'
             if(temp=='pass'):
@@ -54,8 +54,10 @@ def create_event(instat, ind, wyscout):
                 typesecondary+=['free_kick_shot']
 
         #set recoverytag
-        if(ind>0):
-            typesecondary=isrecovery(possteamname, wyscout, typesecondary, matchTimestamp)
+        typesecondary=isrecovery(possteamname, wyscout, typesecondary, matchTimestamp)
+
+        
+
     
     
 
@@ -252,8 +254,6 @@ def create_event(instat, ind, wyscout):
         is_gameinterrupt= (wyscout['type.primary'].iloc[-1]=='game_interruption')
         lastloc=wyscout['location.x'].iloc[-1]
         lastperiod=wyscout['matchPeriod'].iloc[-1]
-        
-        
         if(is_gameinterrupt and typeprimary!='corner' and typeprimary!='goal_kick' and (lastloc==100 or lastloc==0) and lastperiod==period):
             goalkickevent=create_goal_kick(wyscout, locx, locy, keeperA, keeperB, teamA, teamB, new_event)
             wyscout = pd.concat([wyscout, pd.DataFrame([goalkickevent])], ignore_index=True)
@@ -261,7 +261,18 @@ def create_event(instat, ind, wyscout):
             lastlocy=wyscout['location.y'].iloc[-1]
             throwinevent=create_throw_in(lastloc, lastlocy, locx,locy, teamA, teamB, new_event)
             wyscout = pd.concat([wyscout, pd.DataFrame([throwinevent])], ignore_index=True)
-
+        
+        #add touch attribute if needed
+        if(wyscout['pass.recipient.name'].iloc[-1]==playername and typeprimary!='touch'):
+            touchlocx = wyscout['pass.endLocation.x'].iloc[-1]
+            touchlocy = wyscout['pass.endLocation.y'].iloc[-1]
+            deltax=locx-touchlocx
+            deltay=locy-touchlocy
+            touchdist=math.sqrt(deltax*deltax+deltay*deltay)
+            if(touchdist>5):
+                oldevent=wyscout.iloc[-1]
+                touchevent=create_touch(touchlocx, touchlocy, locx,locy, oldevent)
+                wyscout = pd.concat([wyscout, pd.DataFrame([touchevent])], ignore_index=True)
 
     wyscout = pd.concat([wyscout, pd.DataFrame([new_event])], ignore_index=True)
     

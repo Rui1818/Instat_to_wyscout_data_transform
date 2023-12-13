@@ -40,7 +40,7 @@ def pandas_to_json(dataframe, filename):
     midjson= df.to_json(orient='records')
     begin= '{"meta":[],"events":'
     end='}'
-    finaljson = begin+midjson+end
+    finaljson = midjson#begin+midjson+end
 
     file_path = filename+'.json'
 

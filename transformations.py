@@ -41,6 +41,8 @@ primary_events=[
     'Ball out of the field',
     'Deferred foul',
     'Foul',
+    'Yellow card',
+    'Red card',
     'Pass interceptions',
     'Shots blocked',
     'Cross interception',
@@ -80,7 +82,8 @@ gameinterruption_events=[
 
 infraction_events = [
     'Deferred foul',
-    'Foul'
+    'Foul',
+    'Yellow card','Red card'
 ]
 interception_events = [
     'Pass interceptions',
@@ -614,7 +617,8 @@ def check_free_kick_secondaries(df,index, action, secondary):
     freekickcrosslist=shotassistlist+['Accurate crossing from set piece']+['Inaccurate set-piece cross']
     if action in shot_events:
         secondary+=["free_kick_shot"]
-
+    if (action=='Goal'):
+        secondary+=["goal"]
     if action in freekickcrosslist:
         secondary+=["free_kick_cross"]
     return secondary 
@@ -743,17 +747,25 @@ def get_event_type(df, index, teamA, teamB,keeperA, keeperB, period):
     action = df['action_name'].iloc[index]
     if (action=='Match end'):
         raise Exception ("event match end should not been reached in this state")
-    
+    wasfoul=(action=='Foul')
     primary = get_primary_type(df, index) if (period!='P') else 'postmatch_penalty'
     secondary = get_secondary_type(df, index, primary, [])
     
     index+=1
     action = df['action_name'].iloc[index]
-    while(action not in primary_events):  #have to check penalties
-        updateinformations(df, index, teamA, teamB, keeperA, keeperB)
-        secondary = get_secondary_type(df, index,primary, secondary)
-        index+=1
-        action=df['action_name'].iloc[index]
+    if(wasfoul):
+        while(action not in primary_events or action=='Yellow card' or action=='Red card'):  #skip over cards if it was a foul
+            updateinformations(df, index, teamA, teamB, keeperA, keeperB)
+            secondary = get_secondary_type(df, index,primary, secondary)
+            index+=1
+            action=df['action_name'].iloc[index]
+    else:
+        while(action not in primary_events):  #have to check penalties
+            updateinformations(df, index, teamA, teamB, keeperA, keeperB)
+            secondary = get_secondary_type(df, index,primary, secondary)
+            index+=1
+            action=df['action_name'].iloc[index]
+    
     
     return index, primary, list(set(secondary))
 
@@ -942,11 +954,13 @@ def isrecovery(possteam,wyscout,secondary, timestamp):
     wyposs = wyscout['possession.team.name'].iloc[ind]
     primary=wyscout['type.primary'].iloc[ind]
     delta=timedelta(seconds=5)
-    if (len(wyposs)>0) and (len(possteam)>0):
-        if(possteam!=wyposs and primary!='game_interruption' and primary!='shot' and primary!='shot_against'):
-            secondary+=['recovery']
-            if(formattedtimestamp-time<delta):
-                secondary+=['counterpressing_recovery']
+    if(wyposs!=None and possteam!=None):
+        if (len(wyposs)>0) and (len(possteam)>0):
+            if(possteam!=wyposs and primary!='game_interruption' and primary!='shot' and primary!='shot_against'):
+                secondary+=['recovery']
+                if(formattedtimestamp-time<delta):
+                    secondary+=['counterpressing_recovery']
+    
 
     return secondary
 
@@ -1043,4 +1057,18 @@ def create_throw_in(lastloc,lastlocy,destx,desty, teamA, teamB, new_event):
     event['infraction.type']=np.nan
     event['carry.progression']=np.nan
 
+    return event
+
+
+
+def create_touch(touchlocx, touchlocy, locx,locy, oldevent):
+    event=oldevent.copy()
+    event['location.x']=touchlocx
+    event['location.y']=touchlocy
+    event['type.primary']='touch'
+    event['type.secondary']=['carry']
+    event['carry.progression']=locx-touchlocx
+    event['carry.endLocation.x']=locx
+    event['carry.endLocation.y']=locy
+    event['pass.angle']=np.nan
     return event
