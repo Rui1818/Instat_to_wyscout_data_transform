@@ -206,7 +206,6 @@ def isaccurate_pass(action):
 
 def is_prog_pass(x,destx):
     dx=destx-x
-
     if(x<=52.5):
         if(destx<=52.5):
             if(dx>=30):
@@ -908,7 +907,6 @@ def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keeperc
         elif(reflexsave):
             newsecondary+=['postmatch_penalty_saved']
     
-    
     new_event_2['type.secondary']=newsecondary
     new_event_2['location.x']=keepercoord_x
     new_event_2['location.y']=keepercoord_y
@@ -927,8 +925,6 @@ def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keeperc
 
 
     return new_event_2
-
-
 
 def isshotafter(timestamp, wyscout):
     format_str = "%H:%M:%S.%f" 
@@ -1061,14 +1057,34 @@ def create_throw_in(lastloc,lastlocy,destx,desty, teamA, teamB, new_event):
 
     return event
 
-
+def isprogrun(x, destx):
+    dx=destx-x
+    if(x<=50):
+        if(destx<=50):
+            if(dx>=28.5):
+                return True
+            else:
+                return False
+        else:
+            if(dx>=14.2):
+                return True
+            else:
+                return False
+    else:
+        if(dx>=9.5):
+            return True
+        else:
+            return False
 
 def create_touch(touchlocx, touchlocy, locx,locy, oldevent):
     event=oldevent.copy()
     event['location.x']=touchlocx
     event['location.y']=touchlocy
     event['type.primary']='touch'
-    event['type.secondary']=['carry']
+    secondary=['carry']
+    if(isprogrun(touchlocx, locx)):
+        secondary+=['progressive_run']
+    event['type.secondary']=secondary
     event['carry.progression']=locx-touchlocx
     event['carry.endLocation.x']=locx
     event['carry.endLocation.y']=locy
