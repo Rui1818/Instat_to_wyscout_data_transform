@@ -1,5 +1,4 @@
 import pandas as pd
-import cmath
 import numpy as np
 from transformations import *
 
@@ -15,9 +14,13 @@ def create_event(instat, ind, wyscout):
     global current_possession,poss_types, withshot,withshotongoal, withgoal, flank
     period=get_period(instat,ind)
     
+<<<<<<< Updated upstream
 
     index_instat, typeprimary, typesecondary = get_event_type(instat, ind, teamA, teamB, keeperA, keeperB, period)
+=======
+>>>>>>> Stashed changes
     action = instat['action_name'].iloc[ind]
+    index_instat, typeprimary, typesecondary = get_event_type(instat, ind, teamA, teamB, keeperA, keeperB, period)
     #setup every attribute
     id=instat['id'].iloc[ind]
     videoTimestamp=instat['second'].iloc[ind]
@@ -57,11 +60,7 @@ def create_event(instat, ind, wyscout):
         #set recoverytag
         typesecondary=isrecovery(possteamname, wyscout, typesecondary, matchTimestamp)
 
-        
-
     
-    
-
     #passing
     if not (pd.isna(instat["pos_dest_x005F_x"].iloc[ind])) and typeprimary!='shot':
         passaccurate=isaccurate_pass(action)
@@ -69,8 +68,10 @@ def create_event(instat, ind, wyscout):
         passend_x, passend_y=get_dest_location(instat,ind)
         if(passaccurate):
             passrec, passrec_pos_instat = get_pass_recipient(instat, ind)
+            
             passrec_pos = position_transform(passrec_pos_instat, teamformation) 
-        else:passrec= passrec_pos_instat=passrec_pos=np.nan
+        else:
+            passrec= passrec_pos_instat=passrec_pos=np.nan
     else:
         passaccurate=passangle=passend_x=passend_y=passrec=passrec_pos=np.nan
     
@@ -263,6 +264,7 @@ def create_event(instat, ind, wyscout):
             throwinevent=create_throw_in(lastloc, lastlocy, locx,locy, teamA, teamB, new_event)
             wyscout = pd.concat([wyscout, pd.DataFrame([throwinevent])], ignore_index=True)
         
+        '''
         #add touch attribute if needed
         if(wyscout['pass.recipient.name'].iloc[-1]==playername and typeprimary!='touch'):
             touchlocx = wyscout['pass.endLocation.x'].iloc[-1]
@@ -270,11 +272,11 @@ def create_event(instat, ind, wyscout):
             deltax=locx-touchlocx
             deltay=locy-touchlocy
             touchdist=math.sqrt(deltax*deltax+deltay*deltay)
-            if(touchdist>5):
+            if(touchdist>6):
                 oldevent=wyscout.iloc[-1]
                 touchevent=create_touch(touchlocx, touchlocy, locx,locy, oldevent)
                 wyscout = pd.concat([wyscout, pd.DataFrame([touchevent])], ignore_index=True)
-
+        '''
     wyscout = pd.concat([wyscout, pd.DataFrame([new_event])], ignore_index=True)
     
     #check when second event has to be generated
@@ -310,7 +312,9 @@ def pandas_transform(path):
     keeperA,keeperB= get_keepers(instatdf)
 
     #remove unnecessairy rows
-    mask = (instatdf['second']==0.00) & (~instatdf['player_name'].isna()) & (instatdf['action_name']!='Attacking pass accurate')&(instatdf.index<100)
+    mask = ((instatdf['second']==0.00) & (~instatdf['player_name'].isna()) & (instatdf['action_name']!='Attacking pass accurate')
+            &(instatdf['action_name']!='Non attacking pass accurate')&(instatdf['action_name']!='Non attacking pass inaccurate')&
+            (instatdf['action_name']!='Attacking pass inaccurate')&(instatdf.index<100))
     instatdf = instatdf[~mask]
     todrop = ['line-up', 'Substitute player', '1st half','2nd half', 'Players, that created offside trap']
     mask = ~instatdf['action_name'].isin(todrop)
@@ -319,7 +323,8 @@ def pandas_transform(path):
 
     instatdf=instatdf.reset_index()
 
-    mask = (instatdf['second']==0)&(instatdf['action_name']!='Attacking pass accurate')&(instatdf.index<200)
+    mask = ((instatdf['second']==0.00) & (instatdf['action_name']!='Attacking pass accurate')&(instatdf['action_name']!='Non attacking pass inaccurate')&
+            (instatdf['action_name']!='Attacking pass inaccurate')&(instatdf['action_name']!='Non attacking pass accurate')&(instatdf.index<200))
     instatdf = instatdf[~mask] 
     #ready for wyscout transformation
 

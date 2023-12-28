@@ -1,0 +1,727 @@
+matchTimestamp,type.primary,type.secondary,player.name,team.name,pass.recipient.name
+00:00:01.653,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",S. Jackson,Grasshopper,I. Rutishauser
+00:00:02.834,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:00:06.556,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,R. Rinast
+00:00:09.046,pass,"['lateral_pass', 'short_or_medium_pass']",R. Rinast,Grasshopper,Marta Cazalla
+00:00:12.477,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,R. Rinast
+00:00:14.283,pass,['short_or_medium_pass'],R. Rinast,Grasshopper,Marta Cazalla
+00:00:22.720,pass,"['forward_pass', 'long_pass', 'progressive_pass']",Marta Cazalla,Grasshopper,E. Ljustina
+00:00:24.267,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",E. Ljustina,Grasshopper,E. Pápai
+00:00:28.326,pass,"['forward_pass', 'short_or_medium_pass']",J. Stierli,Zürich,M. Höbinger
+00:00:32.053,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third', 'pass_to_penalty_area', 'through_pass']",M. Höbinger,Zürich,I. Rutishauser
+00:00:40.319,pass,"['lateral_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,R. Rinast
+00:00:41.452,pass,"['forward_pass', 'short_or_medium_pass', 'under_pressure']",R. Rinast,Grasshopper,
+00:00:53.006,pass,"['forward_pass', 'head_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Pinther
+00:01:04.116,pass,"['forward_pass', 'pass_to_final_third', 'short_or_medium_pass']",E. Pápai,Grasshopper,N. Riesen
+00:01:07.106,pass,"['back_pass', 'recovery', 'short_or_medium_pass']",N. Riesen,Zürich,S. Friedli
+00:01:09.432,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,N. Mégroz
+00:01:14.608,pass,"['lateral_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,S. Friedli
+00:01:18.788,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,L. Vetterlein
+00:01:21.217,pass,"['forward_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:01:24.095,pass,"['lateral_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,K. Dubs
+00:01:28.713,pass,"['back_pass', 'loss', 'short_or_medium_pass', 'under_pressure']",S. Jackson,Grasshopper,F. Humm
+00:01:35.026,pass,['short_or_medium_pass'],F. Humm,Zürich,K. Dubs
+00:01:37.990,pass,['short_or_medium_pass'],F. Humm,Zürich,M. Höbinger
+00:01:40.027,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third', 'through_pass']",M. Höbinger,Zürich,Marta Cazalla
+00:02:27.954,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,K. Buzás
+00:02:34.818,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,V. Laino
+00:02:35.990,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:02:38.017,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,Marta Cazalla
+00:02:43.775,pass,['short_or_medium_pass'],Marta Cazalla,Grasshopper,Zhang Linyan
+00:02:45.164,pass,"['forward_pass', 'recovery', 'short_or_medium_pass']",M. Höbinger,Zürich,F. Humm
+00:02:47.068,pass,"['forward_pass', 'pass_to_penalty_area', 'short_or_medium_pass', 'smart_pass', 'through_pass']",F. Humm,Zürich,V. Laino
+00:03:02.555,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,I. Rutishauser
+00:03:04.836,pass,['short_or_medium_pass'],I. Rutishauser,Grasshopper,Marta Cazalla
+00:03:12.530,pass,"['forward_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,Zhang Linyan
+00:03:14.771,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",Zhang Linyan,Grasshopper,R. Rinast
+00:03:18.462,pass,"['lateral_pass', 'short_or_medium_pass']",R. Rinast,Grasshopper,V. Laino
+00:03:20.024,pass,"['short_or_medium_pass', 'under_pressure']",V. Laino,Grasshopper,E. Pápai
+00:03:21.877,pass,"['back_pass', 'linkup_play', 'short_or_medium_pass']",E. Pápai,Grasshopper,I. Rutishauser
+00:03:24.567,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,K. Buzás
+00:03:27.518,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",K. Buzás,Grasshopper,L. Vetterlein
+00:03:29.679,pass,"['forward_pass', 'loss', 'recovery', 'short_or_medium_pass']",L. Vetterlein,Zürich,M. Rey
+00:03:40.031,pass,"['loss', 'short_or_medium_pass']",E. Pfister,Grasshopper,K. Dubs
+00:03:56.343,pass,"['forward_pass', 'loss', 'pass_to_final_third', 'short_or_medium_pass']",N. Riesen,Zürich,Marta Cazalla
+00:04:02.956,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,S. Jackson
+00:04:05.926,pass,"['forward_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Zhang Linyan
+00:04:10.738,pass,"['lateral_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,
+00:04:23.143,pass,"['forward_pass', 'short_or_medium_pass', 'under_pressure']",Marta Cazalla,Grasshopper,R. Rinast
+00:04:26.372,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third']",R. Rinast,Grasshopper,L. Vetterlein
+00:04:31.939,pass,"['back_pass', 'short_or_medium_pass']",N. Riesen,Zürich,J. Stierli
+00:04:33.733,pass,"['forward_pass', 'long_pass', 'loss', 'progressive_pass', 'under_pressure']",J. Stierli,Zürich,V. Laino
+00:04:35.287,pass,"['head_pass', 'lateral_pass', 'progressive_pass', 'recovery', 'short_or_medium_pass']",V. Laino,Grasshopper,
+00:04:36.734,pass,"['forward_pass', 'pass_to_final_third', 'short_or_medium_pass', 'under_pressure']",S. Jackson,Grasshopper,E. Pápai
+00:04:41.143,pass,"['lateral_pass', 'linkup_play', 'short_or_medium_pass']",E. Pápai,Grasshopper,E. Ljustina
+00:04:44.603,pass,['short_or_medium_pass'],E. Ljustina,Grasshopper,S. Jackson
+00:04:46.427,pass,"['lateral_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,V. Laino
+00:04:48.516,pass,"['lateral_pass', 'pass_to_final_third', 'short_or_medium_pass']",V. Laino,Grasshopper,L. Meroni
+00:04:51.687,pass,"['cross', 'lateral_pass', 'loss']",L. Meroni,Grasshopper,N. Riesen
+00:04:57.445,pass,['short_or_medium_pass'],Zhang Linyan,Grasshopper,S. Jackson
+00:05:00.974,pass,"['lateral_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Marta Cazalla
+00:05:03.376,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:05:06.032,pass,"['forward_pass', 'long_pass', 'pass_to_final_third']",V. Laino,Grasshopper,L. Meroni
+00:05:11.399,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",N. Mégroz,Zürich,L. Vetterlein
+00:05:13.884,pass,"['forward_pass', 'long_pass', 'progressive_pass']",L. Vetterlein,Zürich,S. Piubel
+00:05:18.243,pass,"['back_pass', 'short_or_medium_pass']",S. Piubel,Zürich,K. Dubs
+00:05:19.477,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",K. Dubs,Zürich,K. Buzás
+00:05:24.532,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,S. Piubel
+00:05:49.541,pass,"['deep_completion', 'forward_pass', 'long_pass', 'loss', 'pass_to_final_third', 'pass_to_penalty_area', 'progressive_pass']",M. Höbinger,Zürich,F. Humm
+00:06:30.108,pass,"['lateral_pass', 'long_pass', 'pass_to_final_third', 'recovery', 'counterpressing_recovery']",V. Laino,Grasshopper,R. Rinast
+00:06:35.251,pass,"['cross', 'lateral_pass', 'pass_to_penalty_area']",R. Rinast,Grasshopper,S. Friedli
+00:06:40.596,pass,"['hand_pass', 'lateral_pass', 'recovery', 'short_or_medium_pass']",S. Friedli,Zürich,N. Mégroz
+00:06:44.689,pass,"['forward_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,K. Dubs
+00:06:47.443,pass,"['back_pass', 'short_or_medium_pass']",K. Dubs,Zürich,L. Vetterlein
+00:06:49.857,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",L. Vetterlein,Zürich,
+00:07:12.521,pass,['short_or_medium_pass'],I. Rutishauser,Grasshopper,K. Buzás
+00:07:14.401,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",K. Buzás,Grasshopper,R. Rinast
+00:07:17.032,pass,"['forward_pass', 'long_pass', 'loss']",R. Rinast,Grasshopper,J. Stierli
+00:07:20.186,pass,"['forward_pass', 'head_pass', 'progressive_pass', 'recovery', 'short_or_medium_pass']",J. Stierli,Zürich,N. Riesen
+00:07:21.721,pass,"['forward_pass', 'long_pass', 'progressive_pass']",N. Riesen,Zürich,V. Pinther
+00:07:23.815,pass,"['lateral_pass', 'short_or_medium_pass']",V. Pinther,Zürich,M. Rey
+00:07:25.139,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",M. Rey,Zürich,N. Riesen
+00:07:31.880,pass,"['loss', 'short_or_medium_pass', 'touch_in_box']",N. Riesen,Zürich,Marta Cazalla
+00:09:39.731,pass,"['hand_pass', 'recovery', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:09:44.579,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,K. Buzás
+00:09:49.580,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",K. Buzás,Grasshopper,J. Stierli
+00:09:52.048,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third', 'pass_to_penalty_area']",J. Stierli,Zürich,I. Rutishauser
+00:10:05.146,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,I. Rutishauser
+00:10:08.895,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:10:14.450,pass,"['forward_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,R. Rinast
+00:10:15.948,pass,"['forward_pass', 'key_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass', 'through_pass', 'under_pressure']",R. Rinast,Grasshopper,E. Pfister
+00:11:15.861,pass,"['forward_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,K. Dubs
+00:11:45.320,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",M. Höbinger,Zürich,N. Mégroz
+00:13:07.932,pass,['short_or_medium_pass'],K. Buzás,Grasshopper,I. Rutishauser
+00:13:10.489,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:13:13.951,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,M. Höbinger
+00:13:17.497,pass,"['forward_pass', 'loss', 'pass_to_final_third', 'pass_to_penalty_area', 'short_or_medium_pass', 'smart_pass', 'through_pass']",M. Höbinger,Zürich,I. Rutishauser
+00:13:24.628,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:13:27.824,pass,"['forward_pass', 'long_pass', 'progressive_pass']",Marta Cazalla,Grasshopper,E. Pfister
+00:14:18.695,pass,"['hand_pass', 'lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,N. Riesen
+00:14:57.156,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third']",J. Stierli,Zürich,I. Rutishauser
+00:15:11.075,pass,"['forward_pass', 'recovery', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,V. Laino
+00:15:13.080,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,Marta Cazalla
+00:15:16.502,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,S. Piubel
+00:15:20.511,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",M. Höbinger,Zürich,K. Dubs
+00:15:22.834,pass,"['back_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Marta Cazalla
+00:15:26.618,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,M. Rey
+00:15:35.554,pass,"['back_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,S. Friedli
+00:15:40.706,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,N. Riesen
+00:15:47.796,pass,"['loss', 'short_or_medium_pass']",N. Riesen,Zürich,E. Ljustina
+00:15:49.323,pass,['short_or_medium_pass'],E. Ljustina,Grasshopper,S. Jackson
+00:15:54.163,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third', 'pass_to_penalty_area']",S. Jackson,Grasshopper,S. Friedli
+00:16:01.090,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",S. Friedli,Zürich,L. Vetterlein
+00:16:06.342,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:16:09.289,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third']",N. Mégroz,Zürich,I. Rutishauser
+00:16:22.353,pass,['short_or_medium_pass'],I. Rutishauser,Grasshopper,Marta Cazalla
+00:16:23.817,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,I. Rutishauser
+00:16:26.496,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,K. Buzás
+00:16:33.886,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,I. Rutishauser
+00:16:37.125,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:16:40.455,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,I. Rutishauser
+00:16:42.563,pass,"['forward_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,V. Laino
+00:16:46.384,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:16:50.885,pass,"['forward_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,R. Rinast
+00:16:55.482,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",V. Pinther,Zürich,F. Humm
+00:16:58.910,pass,"['lateral_pass', 'long_pass', 'loss']",F. Humm,Zürich,Marta Cazalla
+00:17:00.165,pass,"['head_pass', 'lateral_pass', 'recovery', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,L. Meroni
+00:17:05.112,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass', 'under_pressure']",L. Meroni,Grasshopper,
+00:17:10.905,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",N. Mégroz,Zürich,S. Friedli
+00:17:19.506,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,L. Vetterlein
+00:17:22.455,pass,"['forward_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,M. Höbinger
+00:17:23.533,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",M. Höbinger,Zürich,N. Mégroz
+00:17:30.051,pass,"['forward_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,K. Dubs
+00:17:31.518,pass,"['forward_pass', 'pass_to_final_third', 'short_or_medium_pass']",K. Dubs,Zürich,N. Mégroz
+00:17:36.284,pass,"['cross', 'deep_completed_cross', 'lateral_pass', 'progressive_pass', 'touch_in_box']",N. Mégroz,Zürich,F. Humm
+00:17:39.347,pass,"['forward_pass', 'head_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",L. Meroni,Grasshopper,K. Dubs
+00:17:43.745,pass,"['back_pass', 'recovery', 'short_or_medium_pass', 'touch_in_box']",K. Dubs,Zürich,M. Höbinger
+00:17:45.916,pass,"['forward_pass', 'long_pass', 'pass_to_penalty_area', 'through_pass']",M. Höbinger,Zürich,Marta Cazalla
+00:18:04.269,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,K. Buzás
+00:18:10.645,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,Marta Cazalla
+00:18:14.912,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,M. Höbinger
+00:18:18.735,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,S. Piubel
+00:18:19.614,pass,['short_or_medium_pass'],S. Piubel,Zürich,M. Höbinger
+00:18:20.563,pass,"['deep_completion', 'pass_to_penalty_area', 'short_or_medium_pass']",M. Höbinger,Zürich,F. Humm
+00:18:21.586,pass,"['back_pass', 'short_or_medium_pass', 'touch_in_box']",F. Humm,Zürich,M. Höbinger
+00:18:32.524,pass,"['hand_pass', 'lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,L. Meroni
+00:18:37.910,pass,"['back_pass', 'short_or_medium_pass']",L. Meroni,Grasshopper,Marta Cazalla
+00:18:41.070,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,K. Buzás
+00:18:44.650,pass,['short_or_medium_pass'],K. Buzás,Grasshopper,R. Rinast
+00:18:47.569,pass,"['lateral_pass', 'short_or_medium_pass']",R. Rinast,Grasshopper,K. Buzás
+00:18:51.991,pass,['short_or_medium_pass'],K. Buzás,Grasshopper,I. Rutishauser
+00:18:54.624,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:18:55.929,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,I. Rutishauser
+00:18:58.794,pass,"['forward_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,V. Laino
+00:19:00.928,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:19:03.662,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,V. Laino
+00:19:07.275,pass,"['forward_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,E. Ljustina
+00:19:08.549,pass,"['back_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,V. Laino
+00:19:09.705,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:19:13.939,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,R. Rinast
+00:19:18.236,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",R. Rinast,Grasshopper,E. Pfister
+00:19:22.136,pass,"['back_pass', 'recovery', 'short_or_medium_pass']",J. Stierli,Zürich,S. Friedli
+00:19:24.716,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",S. Friedli,Zürich,L. Vetterlein
+00:19:27.909,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:19:32.557,pass,['short_or_medium_pass'],N. Mégroz,Zürich,M. Höbinger
+00:19:34.043,pass,"['forward_pass', 'short_or_medium_pass', 'under_pressure']",M. Höbinger,Zürich,K. Dubs
+00:19:38.298,pass,"['lateral_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",K. Dubs,Zürich,M. Höbinger
+00:19:42.405,pass,"['back_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,I. Rutishauser
+00:19:48.159,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:19:55.519,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third']",Marta Cazalla,Grasshopper,L. Vetterlein
+00:19:58.320,pass,"['forward_pass', 'head_pass', 'recovery', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:20:00.090,pass,['short_or_medium_pass'],N. Mégroz,Zürich,M. Rey
+00:20:01.657,pass,"['back_pass', 'short_or_medium_pass']",M. Rey,Zürich,L. Vetterlein
+00:20:03.718,pass,"['back_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,S. Friedli
+00:20:08.328,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,N. Riesen
+00:20:09.593,pass,"['lateral_pass', 'short_or_medium_pass']",N. Riesen,Zürich,J. Stierli
+00:20:14.897,pass,"['lateral_pass', 'short_or_medium_pass']",J. Stierli,Zürich,L. Vetterlein
+00:20:18.803,pass,"['forward_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:20:26.040,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,S. Piubel
+00:20:31.937,pass,"['deep_completion', 'key_pass', 'lateral_pass', 'short_or_medium_pass', 'shot_assist', 'touch_in_box']",S. Piubel,Zürich,V. Pinther
+00:20:51.315,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,K. Buzás
+00:20:56.395,pass,['short_or_medium_pass'],K. Buzás,Grasshopper,V. Laino
+00:20:58.548,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:21:02.433,pass,['short_or_medium_pass'],K. Buzás,Grasshopper,E. Ljustina
+00:21:03.383,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",E. Ljustina,Grasshopper,S. Jackson
+00:21:08.139,pass,"['lateral_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Marta Cazalla
+00:21:12.285,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:21:15.118,pass,"['back_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,I. Rutishauser
+00:21:17.406,pass,"['forward_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,K. Buzás
+00:21:21.426,pass,"['forward_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,E. Pápai
+00:21:22.366,pass,"['back_pass', 'linkup_play', 'short_or_medium_pass', 'under_pressure']",E. Pápai,Grasshopper,S. Jackson
+00:21:37.077,pass,"['back_pass', 'short_or_medium_pass']",N. Riesen,Zürich,V. Pinther
+00:21:38.404,pass,"['cross', 'lateral_pass', 'loss', 'pass_to_penalty_area']",V. Pinther,Zürich,K. Buzás
+00:21:47.580,pass,"['pass_to_final_third', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Riesen
+00:21:54.899,pass,"['deep_completion', 'second_assist', 'short_or_medium_pass', 'touch_in_box']",N. Riesen,Zürich,F. Humm
+00:21:55.678,pass,"['assist', 'deep_completion', 'head_pass', 'key_pass', 'short_or_medium_pass', 'shot_assist', 'touch_in_box']",F. Humm,Zürich,V. Pinther
+00:22:42.612,pass,"['back_pass', 'short_or_medium_pass']",E. Pfister,Grasshopper,V. Laino
+00:22:45.856,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,S. Jackson
+00:22:47.134,pass,"['back_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Marta Cazalla
+00:22:49.327,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,K. Buzás
+00:22:54.154,pass,"['forward_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,E. Ljustina
+00:22:56.244,pass,"['forward_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,R. Rinast
+00:23:00.536,pass,"['forward_pass', 'pass_to_final_third', 'short_or_medium_pass']",R. Rinast,Grasshopper,J. Stierli
+00:23:01.820,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",J. Stierli,Zürich,V. Laino
+00:23:06.422,pass,"['forward_pass', 'pass_to_final_third', 'short_or_medium_pass']",V. Laino,Grasshopper,R. Rinast
+00:23:33.526,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",M. Höbinger,Zürich,R. Rinast
+00:23:43.960,pass,"['forward_pass', 'head_pass', 'loss', 'short_or_medium_pass']",M. Höbinger,Zürich,F. Humm
+00:23:48.485,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",Zhang Linyan,Grasshopper,K. Buzás
+00:23:49.515,pass,"['forward_pass', 'short_or_medium_pass', 'under_pressure']",K. Buzás,Grasshopper,Zhang Linyan
+00:23:52.940,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",M. Rey,Zürich,N. Riesen
+00:23:55.482,pass,"['back_pass', 'short_or_medium_pass']",N. Riesen,Zürich,J. Stierli
+00:23:58.749,pass,"['lateral_pass', 'short_or_medium_pass']",J. Stierli,Zürich,L. Vetterlein
+00:24:02.841,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:24:05.377,pass,"['forward_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,M. Höbinger
+00:24:09.458,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,K. Dubs
+00:24:33.545,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,J. Stierli
+00:24:36.638,pass,"['lateral_pass', 'short_or_medium_pass']",J. Stierli,Zürich,N. Riesen
+00:24:46.316,pass,"['deep_completion', 'short_or_medium_pass', 'shot_assist', 'touch_in_box']",N. Riesen,Zürich,F. Humm
+00:25:43.681,pass,"['back_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,S. Jackson
+00:25:46.687,pass,"['lateral_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Marta Cazalla
+00:25:49.723,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third', 'through_pass']",Marta Cazalla,Grasshopper,J. Stierli
+00:25:54.211,pass,"['back_pass', 'recovery', 'short_or_medium_pass']",J. Stierli,Zürich,S. Friedli
+00:25:55.933,pass,"['lateral_pass', 'long_pass', 'under_pressure']",S. Friedli,Zürich,N. Mégroz
+00:26:00.445,pass,"['forward_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,M. Höbinger
+00:26:02.015,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",S. Jackson,Grasshopper,M. Höbinger
+00:26:05.242,pass,"['back_pass', 'recovery', 'counterpressing_recovery', 'short_or_medium_pass']",M. Höbinger,Zürich,L. Vetterlein
+00:26:09.428,pass,"['forward_pass', 'long_pass']",L. Vetterlein,Zürich,S. Piubel
+00:26:11.509,pass,"['forward_pass', 'head_pass', 'short_or_medium_pass']",S. Piubel,Zürich,
+00:26:23.054,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",Zhang Linyan,Grasshopper,Marta Cazalla
+00:26:23.689,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third', 'under_pressure']",Marta Cazalla,Grasshopper,M. Rey
+00:26:25.391,pass,"['loss', 'progressive_pass', 'short_or_medium_pass']",M. Rey,Zürich,E. Pfister
+00:26:49.997,pass,"['lateral_pass', 'short_or_medium_pass', 'touch_in_box']",Zhang Linyan,Grasshopper,Marta Cazalla
+00:26:51.957,pass,"['forward_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,L. Meroni
+00:26:54.124,pass,"['cross', 'cross_blocked']",L. Meroni,Grasshopper,
+00:27:00.178,pass,['short_or_medium_pass'],K. Dubs,Zürich,N. Mégroz
+00:27:01.794,pass,"['forward_pass', 'long_pass', 'loss', 'progressive_pass']",N. Mégroz,Zürich,E. Ljustina
+00:27:08.056,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:27:13.959,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,E. Pápai
+00:27:16.646,pass,"['forward_pass', 'linkup_play', 'short_or_medium_pass']",E. Pápai,Grasshopper,S. Jackson
+00:27:19.928,pass,"['lateral_pass', 'short_or_medium_pass', 'shot_assist']",S. Jackson,Grasshopper,Zhang Linyan
+00:27:37.471,pass,"['hand_pass', 'lateral_pass', 'recovery', 'short_or_medium_pass']",S. Friedli,Zürich,L. Vetterlein
+00:27:42.827,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,S. Friedli
+00:27:46.583,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,J. Stierli
+00:27:49.800,pass,['short_or_medium_pass'],J. Stierli,Zürich,N. Riesen
+00:27:52.604,pass,"['back_pass', 'short_or_medium_pass']",N. Riesen,Zürich,J. Stierli
+00:27:53.712,pass,"['forward_pass', 'long_pass', 'progressive_pass', 'under_pressure']",J. Stierli,Zürich,
+00:28:08.845,pass,['short_or_medium_pass'],E. Pápai,Grasshopper,E. Ljustina
+00:28:10.267,pass,['short_or_medium_pass'],E. Ljustina,Grasshopper,S. Jackson
+00:28:12.563,pass,"['back_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,V. Laino
+00:28:15.554,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,Marta Cazalla
+00:28:18.369,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:28:20.581,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:28:23.442,pass,"['forward_pass', 'pass_to_final_third', 'short_or_medium_pass']",K. Buzás,Grasshopper,R. Rinast
+00:28:25.156,pass,"['lateral_pass', 'short_or_medium_pass']",R. Rinast,Grasshopper,J. Stierli
+00:28:27.361,pass,"['forward_pass', 'long_pass', 'loss']",J. Stierli,Zürich,K. Buzás
+00:28:34.074,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",K. Buzás,Grasshopper,Marta Cazalla
+00:28:37.595,pass,"['lateral_pass', 'long_pass']",Marta Cazalla,Grasshopper,
+00:28:55.383,pass,"['back_pass', 'recovery', 'short_or_medium_pass', 'under_pressure']",E. Ljustina,Grasshopper,S. Jackson
+00:28:59.916,pass,"['back_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,V. Laino
+00:29:02.383,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,Marta Cazalla
+00:29:05.120,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:29:07.449,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:29:13.525,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,V. Laino
+00:29:16.445,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,Marta Cazalla
+00:29:20.595,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",Marta Cazalla,Grasshopper,E. Pápai
+00:29:26.975,pass,"['lateral_pass', 'short_or_medium_pass']",N. Riesen,Zürich,L. Vetterlein
+00:29:30.535,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:29:33.211,pass,"['back_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,L. Vetterlein
+00:29:35.798,pass,"['forward_pass', 'long_pass', 'progressive_pass', 'through_pass']",L. Vetterlein,Zürich,S. Piubel
+00:30:02.755,pass,"['forward_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Zhang Linyan
+00:30:27.393,pass,"['lateral_pass', 'progressive_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,E. Pápai
+00:30:49.301,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,K. Dubs
+00:30:54.807,pass,"['recovery', 'short_or_medium_pass', 'under_pressure']",Marta Cazalla,Grasshopper,L. Meroni
+00:30:59.223,pass,"['forward_pass', 'short_or_medium_pass']",L. Meroni,Grasshopper,E. Pfister
+00:31:05.770,pass,"['lateral_pass', 'short_or_medium_pass']",L. Meroni,Grasshopper,E. Ljustina
+00:31:08.749,pass,"['loss', 'short_or_medium_pass', 'smart_pass', 'through_pass']",E. Ljustina,Grasshopper,M. Rey
+00:31:11.533,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass']",V. Pinther,Zürich,M. Rey
+00:31:15.276,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass', 'shot_assist']",M. Rey,Zürich,V. Pinther
+00:31:26.978,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:31:30.015,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:31:32.367,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,V. Laino
+00:31:35.223,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,Marta Cazalla
+00:31:39.549,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:31:42.052,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:31:45.775,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,E. Pápai
+00:31:51.148,pass,['short_or_medium_pass'],E. Pápai,Grasshopper,E. Ljustina
+00:31:52.033,pass,"['back_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,V. Laino
+00:31:55.863,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,Marta Cazalla
+00:31:58.694,pass,"['lateral_pass', 'progressive_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,Zhang Linyan
+00:32:04.833,pass,"['back_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,Marta Cazalla
+00:32:07.478,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,K. Buzás
+00:32:12.029,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",K. Buzás,Grasshopper,E. Pfister
+00:32:16.551,pass,['short_or_medium_pass'],V. Pinther,Zürich,M. Rey
+00:32:18.039,pass,"['lateral_pass', 'short_or_medium_pass']",M. Rey,Zürich,M. Höbinger
+00:32:21.800,pass,"['forward_pass', 'pass_to_final_third', 'pass_to_penalty_area', 'progressive_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,K. Dubs
+00:32:25.804,pass,"['cross', 'lateral_pass', 'loss', 'touch_in_box']",K. Dubs,Zürich,I. Rutishauser
+00:32:29.120,pass,"['forward_pass', 'hand_pass', 'recovery', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,R. Rinast
+00:32:38.240,pass,"['lateral_pass', 'short_or_medium_pass']",R. Rinast,Grasshopper,E. Pfister
+00:32:39.599,pass,"['back_pass', 'short_or_medium_pass']",E. Pfister,Grasshopper,Zhang Linyan
+00:32:41.275,pass,"['forward_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,L. Meroni
+00:32:47.809,pass,"['cross', 'deep_completed_cross', 'lateral_pass', 'pass_to_penalty_area', 'progressive_pass']",L. Meroni,Grasshopper,E. Pfister
+00:32:54.008,pass,"['back_pass', 'short_or_medium_pass', 'touch_in_box']",Zhang Linyan,Grasshopper,S. Jackson
+00:32:57.459,pass,"['forward_pass', 'short_or_medium_pass']",J. Stierli,Zürich,S. Piubel
+00:33:04.465,pass,"['lateral_pass', 'short_or_medium_pass']",S. Piubel,Zürich,M. Höbinger
+00:33:08.066,pass,"['forward_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,S. Piubel
+00:33:09.284,pass,"['linkup_play', 'loss', 'short_or_medium_pass', 'under_pressure']",S. Piubel,Zürich,E. Ljustina
+00:33:52.455,pass,"['lateral_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,L. Vetterlein
+00:33:55.706,pass,"['forward_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,K. Dubs
+00:33:57.436,pass,['short_or_medium_pass'],K. Dubs,Zürich,S. Piubel
+00:33:59.986,pass,"['back_pass', 'short_or_medium_pass']",S. Piubel,Zürich,M. Höbinger
+00:34:02.816,pass,"['back_pass', 'long_pass']",M. Höbinger,Zürich,S. Friedli
+00:34:07.929,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,N. Riesen
+00:34:12.882,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",N. Riesen,Zürich,V. Pinther
+00:34:18.113,pass,"['cross', 'lateral_pass', 'loss', 'touch_in_box']",V. Pinther,Zürich,L. Meroni
+00:34:24.018,pass,['short_or_medium_pass'],M. Höbinger,Zürich,
+00:34:27.572,pass,"['forward_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,E. Pfister
+00:34:33.517,pass,"['back_pass', 'short_or_medium_pass']",E. Pfister,Grasshopper,S. Jackson
+00:34:35.031,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass', 'under_pressure']",S. Jackson,Grasshopper,Zhang Linyan
+00:34:38.204,pass,"['back_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,S. Jackson
+00:34:39.216,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'under_pressure']",S. Jackson,Grasshopper,J. Stierli
+00:34:45.670,pass,"['back_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",J. Stierli,Zürich,E. Pfister
+00:35:06.903,pass,"['back_pass', 'short_or_medium_pass']",K. Dubs,Zürich,N. Mégroz
+00:35:07.872,pass,"['forward_pass', 'long_pass', 'loss', 'progressive_pass']",N. Mégroz,Zürich,V. Laino
+00:35:10.773,pass,"['forward_pass', 'head_pass', 'recovery', 'short_or_medium_pass']",V. Laino,Grasshopper,E. Ljustina
+00:35:13.977,pass,"['lateral_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,K. Buzás
+00:35:18.905,pass,"['lateral_pass', 'short_or_medium_pass']",V. Pinther,Zürich,M. Höbinger
+00:35:21.190,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",M. Höbinger,Zürich,F. Humm
+00:35:28.873,pass,"['deep_completion', 'forward_pass', 'short_or_medium_pass', 'touch_in_box']",F. Humm,Zürich,N. Riesen
+00:35:30.551,pass,"['cross', 'deep_completed_cross', 'key_pass', 'lateral_pass', 'shot_assist', 'touch_in_box']",N. Riesen,Zürich,S. Piubel
+00:35:51.039,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,E. Ljustina
+00:35:52.390,pass,"['back_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,S. Jackson
+00:35:55.868,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,
+00:39:55.026,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:39:58.065,pass,['short_or_medium_pass'],K. Buzás,Grasshopper,V. Laino
+00:40:02.702,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",V. Laino,Grasshopper,L. Meroni
+00:40:16.622,pass,"['head_pass', 'recovery', 'counterpressing_recovery', 'short_or_medium_pass']",L. Meroni,Grasshopper,E. Ljustina
+00:40:19.952,pass,"['loss', 'progressive_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,S. Piubel
+00:40:37.518,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",L. Vetterlein,Zürich,A. Pilgrim
+00:40:43.382,pass,"['back_pass', 'recovery', 'short_or_medium_pass']",E. Ljustina,Grasshopper,V. Laino
+00:40:44.858,pass,"['forward_pass', 'long_pass', 'loss', 'progressive_pass', 'under_pressure']",V. Laino,Grasshopper,M. Rey
+00:40:46.834,pass,"['forward_pass', 'recovery', 'counterpressing_recovery', 'short_or_medium_pass']",M. Rey,Zürich,
+00:40:50.788,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,A. Pilgrim
+00:41:02.278,pass,"['forward_pass', 'hand_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:41:09.443,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:41:12.236,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:41:16.647,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass', 'under_pressure']",K. Buzás,Grasshopper,N. Riesen
+00:41:20.000,pass,"['back_pass', 'short_or_medium_pass']",N. Riesen,Zürich,J. Stierli
+00:41:22.651,pass,"['back_pass', 'short_or_medium_pass']",J. Stierli,Zürich,S. Friedli
+00:41:26.834,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,L. Vetterlein
+00:41:29.885,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:41:39.327,pass,"['lateral_pass', 'short_or_medium_pass']",A. Pilgrim,Zürich,M. Rey
+00:41:40.808,pass,"['back_pass', 'short_or_medium_pass']",M. Rey,Zürich,L. Vetterlein
+00:41:43.787,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,J. Stierli
+00:41:47.225,pass,"['lateral_pass', 'short_or_medium_pass']",J. Stierli,Zürich,L. Vetterlein
+00:41:50.709,pass,"['back_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,S. Friedli
+00:41:55.094,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,L. Vetterlein
+00:41:58.156,pass,"['forward_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:42:00.042,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",N. Mégroz,Zürich,V. Laino
+00:42:02.445,pass,"['recovery', 'short_or_medium_pass', 'under_pressure']",V. Laino,Grasshopper,S. Jackson
+00:42:05.664,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",S. Jackson,Grasshopper,V. Laino
+00:42:06.558,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",V. Laino,Grasshopper,K. Buzás
+00:42:09.001,pass,"['back_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,I. Rutishauser
+00:42:12.510,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,K. Buzás
+00:42:16.460,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,V. Laino
+00:42:20.152,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,Marta Cazalla
+00:42:22.670,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:42:25.314,pass,"['forward_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,Zhang Linyan
+00:42:27.066,pass,"['lateral_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,Marta Cazalla
+00:42:30.131,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third']",Marta Cazalla,Grasshopper,J. Stierli
+00:42:32.488,pass,"['forward_pass', 'long_pass', 'progressive_pass']",J. Stierli,Zürich,Zhang Linyan
+00:42:38.057,pass,"['forward_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,A. Pilgrim
+00:42:41.032,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",A. Pilgrim,Zürich,S. Piubel
+00:42:44.134,pass,"['cross', 'deep_completed_cross', 'key_pass', 'touch_in_box']",S. Piubel,Zürich,F. Humm
+00:42:57.504,pass,"['forward_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,S. Jackson
+00:43:01.188,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass', 'under_pressure']",S. Jackson,Grasshopper,L. Meroni
+00:43:03.516,pass,['short_or_medium_pass'],L. Meroni,Grasshopper,E. Ljustina
+00:43:09.070,pass,"['lateral_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,S. Jackson
+00:43:12.037,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",S. Jackson,Grasshopper,E. Ljustina
+00:43:13.621,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",E. Ljustina,Grasshopper,Marta Cazalla
+00:43:16.417,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,E. Ljustina
+00:43:18.444,pass,['short_or_medium_pass'],E. Ljustina,Grasshopper,Marta Cazalla
+00:43:22.351,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,M. Höbinger
+00:43:37.402,pass,['short_or_medium_pass'],M. Rey,Zürich,N. Riesen
+00:45:02.967,pass,"['back_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,K. Buzás
+00:45:05.476,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,Marta Cazalla
+00:45:11.911,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,K. Buzás
+00:45:15.136,pass,"['forward_pass', 'short_or_medium_pass', 'under_pressure']",K. Buzás,Grasshopper,R. Rinast
+00:45:16.747,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass']",R. Rinast,Grasshopper,
+00:45:19.376,pass,['short_or_medium_pass'],J. Stierli,Zürich,M. Höbinger
+00:45:20.787,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",M. Höbinger,Zürich,V. Pinther
+00:45:26.972,pass,"['cross', 'cross_blocked']",V. Pinther,Zürich,
+00:46:08.212,pass,"['lateral_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",S. Jackson,Grasshopper,
+00:46:39.702,pass,"['back_pass', 'short_or_medium_pass']",A. Pilgrim,Zürich,N. Mégroz
+00:46:40.000,pass,"['forward_pass', 'long_pass']",N. Mégroz,Zürich,M. Höbinger
+00:46:44.948,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",A. Pilgrim,Zürich,Marta Cazalla
+00:47:02.164,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,F. Humm
+00:47:04.990,pass,['short_or_medium_pass'],S. Jackson,Grasshopper,Marta Cazalla
+00:47:05.601,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,Zhang Linyan
+00:47:09.121,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,E. Pápai
+00:47:11.742,pass,"['lateral_pass', 'loss', 'short_or_medium_pass']",E. Pápai,Grasshopper,L. Vetterlein
+00:47:12.739,pass,"['forward_pass', 'long_pass', 'loss', 'progressive_pass']",L. Vetterlein,Zürich,K. Buzás
+00:47:15.002,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass', 'recovery', 'counterpressing_recovery']",K. Buzás,Grasshopper,E. Ljustina
+00:47:17.861,pass,"['forward_pass', 'recovery', 'counterpressing_recovery', 'short_or_medium_pass']",L. Vetterlein,Zürich,M. Rey
+00:47:20.290,pass,"['back_pass', 'short_or_medium_pass']",M. Rey,Zürich,N. Riesen
+00:47:21.604,pass,"['forward_pass', 'long_pass', 'under_pressure']",N. Riesen,Zürich,V. Pinther
+00:47:32.360,pass,"['cross', 'lateral_pass', 'long_pass', 'loss']",E. Pfister,Grasshopper,N. Mégroz
+00:47:42.680,pass,"['forward_pass', 'loss', 'recovery', 'short_or_medium_pass']",N. Mégroz,Zürich,S. Piubel
+00:47:51.703,pass,"['lateral_pass', 'loss', 'pass_to_final_third', 'short_or_medium_pass']",R. Rinast,Grasshopper,N. Riesen
+00:47:56.865,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'recovery', 'short_or_medium_pass', 'shot_assist']",N. Riesen,Zürich,V. Pinther
+00:48:08.109,pass,"['forward_pass', 'hand_pass', 'recovery', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,S. Jackson
+00:48:12.962,pass,"['forward_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Zhang Linyan
+00:48:15.605,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",Zhang Linyan,Grasshopper,S. Jackson
+00:48:20.789,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,E. Ljustina
+00:48:26.453,pass,"['lateral_pass', 'pass_to_final_third', 'short_or_medium_pass']",E. Ljustina,Grasshopper,R. Rinast
+00:48:29.468,pass,"['cross', 'deep_completed_cross', 'key_pass', 'lateral_pass', 'pass_to_penalty_area', 'progressive_pass', 'shot_assist']",R. Rinast,Grasshopper,E. Pfister
+00:48:53.020,pass,"['forward_pass', 'long_pass', 'loss']",N. Mégroz,Zürich,S. Piubel
+00:48:54.793,pass,"['forward_pass', 'head_pass', 'pass_to_final_third', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,E. Pápai
+00:49:17.617,pass,"['cross', 'deep_completed_cross', 'lateral_pass', 'shot_assist', 'touch_in_box']",A. Pilgrim,Zürich,V. Pinther
+00:49:28.714,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",M. Höbinger,Zürich,N. Riesen
+00:50:28.192,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,I. Rutishauser
+00:50:32.138,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,V. Laino
+00:50:37.041,pass,"['forward_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,R. Rinast
+00:50:38.553,pass,"['forward_pass', 'short_or_medium_pass']",R. Rinast,Grasshopper,E. Ljustina
+00:50:39.052,pass,"['head_pass', 'lateral_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,Zhang Linyan
+00:50:41.736,pass,"['short_or_medium_pass', 'shot_assist']",Zhang Linyan,Grasshopper,S. Jackson
+00:51:04.857,pass,"['forward_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:51:07.110,pass,"['forward_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,A. Pilgrim
+00:51:08.831,pass,"['back_pass', 'loss', 'progressive_pass', 'short_or_medium_pass', 'under_pressure']",A. Pilgrim,Zürich,E. Pápai
+00:51:15.991,pass,"['lateral_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,K. Buzás
+00:51:19.500,pass,"['forward_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,E. Ljustina
+00:51:26.977,pass,"['back_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,R. Rinast
+00:51:27.752,pass,"['cross', 'deep_completed_cross', 'lateral_pass', 'pass_to_penalty_area', 'progressive_pass']",R. Rinast,Grasshopper,
+00:52:19.235,pass,"['forward_pass', 'short_or_medium_pass']",A. Pilgrim,Zürich,M. Höbinger
+00:52:32.745,pass,"['cross', 'deep_completed_cross', 'lateral_pass', 'progressive_pass', 'touch_in_box']",M. Höbinger,Zürich,
+00:52:56.142,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:53:00.864,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:53:05.011,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",K. Buzás,Grasshopper,M. Rey
+00:53:07.688,pass,"['progressive_pass', 'short_or_medium_pass']",M. Rey,Zürich,E. Ljustina
+00:53:11.996,pass,"['lateral_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,I. Rutishauser
+00:53:16.045,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+00:53:18.623,pass,"['back_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,I. Rutishauser
+00:53:22.438,pass,"['forward_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,E. Pápai
+00:53:28.391,pass,"['forward_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,E. Ljustina
+00:53:29.239,pass,"['back_pass', 'linkup_play', 'short_or_medium_pass']",E. Ljustina,Grasshopper,E. Pápai
+00:53:29.797,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,E. Ljustina
+00:53:33.977,pass,['short_or_medium_pass'],E. Ljustina,Grasshopper,Zhang Linyan
+00:53:34.982,pass,"['pass_to_final_third', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,S. Jackson
+00:53:37.796,pass,"['short_or_medium_pass', 'shot_assist']",S. Jackson,Grasshopper,E. Ljustina
+00:53:59.824,pass,"['back_pass', 'short_or_medium_pass']",J. Stierli,Zürich,N. Riesen
+00:54:03.497,pass,"['lateral_pass', 'short_or_medium_pass']",N. Riesen,Zürich,S. Friedli
+00:54:05.362,pass,"['forward_pass', 'long_pass', 'progressive_pass', 'under_pressure']",S. Friedli,Zürich,F. Humm
+00:54:09.550,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",F. Humm,Zürich,V. Pinther
+00:54:13.347,pass,"['back_pass', 'recovery', 'short_or_medium_pass', 'under_pressure']",K. Buzás,Grasshopper,I. Rutishauser
+00:54:16.424,pass,"['forward_pass', 'short_or_medium_pass', 'under_pressure']",I. Rutishauser,Grasshopper,V. Laino
+00:54:18.666,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,Marta Cazalla
+00:54:23.823,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,E. Pfister
+00:54:25.906,pass,"['back_pass', 'linkup_play', 'short_or_medium_pass']",E. Pfister,Grasshopper,Zhang Linyan
+00:54:27.496,pass,"['lateral_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,J. Egli
+00:54:29.903,pass,"['lateral_pass', 'short_or_medium_pass']",J. Egli,Grasshopper,E. Pápai
+00:54:31.766,pass,"['lateral_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,Marta Cazalla
+00:54:35.510,pass,"['cross', 'lateral_pass', 'loss']",Marta Cazalla,Grasshopper,L. Vetterlein
+00:54:41.593,pass,"['forward_pass', 'long_pass']",V. Pinther,Zürich,S. Piubel
+00:54:56.642,pass,"['forward_pass', 'hand_pass', 'recovery', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,E. Pápai
+00:55:01.676,pass,"['forward_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,E. Ljustina
+00:55:05.627,pass,"['back_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,K. Buzás
+00:55:09.907,pass,"['forward_pass', 'short_or_medium_pass']",K. Buzás,Grasshopper,S. Jackson
+00:55:13.279,pass,"['forward_pass', 'pass_to_final_third', 'short_or_medium_pass']",S. Jackson,Grasshopper,
+00:55:28.157,pass,"['back_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",S. Piubel,Zürich,Zhang Linyan
+00:55:32.029,pass,"['forward_pass', 'loss', 'pass_to_penalty_area', 'short_or_medium_pass']",E. Ljustina,Grasshopper,S. Friedli
+00:55:35.695,pass,"['hand_pass', 'lateral_pass', 'recovery', 'short_or_medium_pass']",S. Friedli,Zürich,N. Mégroz
+00:55:43.765,pass,"['forward_pass', 'loss', 'pass_to_final_third', 'short_or_medium_pass']",N. Mégroz,Zürich,Marta Cazalla
+00:55:53.235,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+00:55:59.362,pass,"['forward_pass', 'long_pass']",V. Laino,Grasshopper,R. Rinast
+00:56:02.299,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",R. Rinast,Grasshopper,N. Riesen
+00:56:05.851,pass,"['lateral_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,N. Mégroz
+00:56:12.418,pass,"['lateral_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,L. Vetterlein
+00:56:15.637,pass,"['back_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,S. Friedli
+00:56:20.159,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,L. Vetterlein
+00:56:23.909,pass,"['forward_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,N. Mégroz
+00:56:26.717,pass,"['lateral_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,M. Rey
+00:56:27.750,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",M. Rey,Zürich,L. Vetterlein
+00:56:31.087,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,S. Friedli
+00:56:35.046,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,J. Stierli
+00:56:36.339,pass,"['lateral_pass', 'short_or_medium_pass']",J. Stierli,Zürich,S. Friedli
+00:56:39.813,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,L. Vetterlein
+00:56:44.924,pass,"['forward_pass', 'long_pass']",L. Vetterlein,Zürich,A. Pilgrim
+00:56:47.018,pass,"['forward_pass', 'head_pass', 'loss', 'short_or_medium_pass']",A. Pilgrim,Zürich,Marta Cazalla
+00:56:48.979,pass,"['back_pass', 'recovery', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,J. Egli
+00:56:52.478,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass', 'under_pressure']",J. Egli,Grasshopper,E. Pápai
+00:57:30.570,pass,"['lateral_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,L. Vetterlein
+00:57:33.065,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,S. Friedli
+00:57:37.438,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,J. Stierli
+00:57:39.609,pass,"['lateral_pass', 'short_or_medium_pass']",J. Stierli,Zürich,N. Riesen
+00:57:41.960,pass,"['forward_pass', 'short_or_medium_pass']",N. Riesen,Zürich,V. Pinther
+00:58:22.118,pass,"['lateral_pass', 'progressive_pass', 'short_or_medium_pass']",S. Piubel,Zürich,M. Rey
+00:58:29.546,pass,"['lateral_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,R. Rinast
+00:58:31.629,pass,"['forward_pass', 'short_or_medium_pass', 'under_pressure']",R. Rinast,Grasshopper,N. Riesen
+00:58:35.712,pass,"['forward_pass', 'short_or_medium_pass']",N. Riesen,Zürich,
+00:58:53.864,pass,"['lateral_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,E. Ljustina
+00:58:55.813,pass,['short_or_medium_pass'],E. Ljustina,Grasshopper,J. Egli
+00:59:11.243,pass,"['lateral_pass', 'long_pass']",N. Mégroz,Zürich,S. Piubel
+00:59:18.208,pass,"['deep_completion', 'key_pass', 'short_or_medium_pass', 'shot_assist', 'touch_in_box']",S. Piubel,Zürich,F. Humm
+00:59:35.281,pass,"['lateral_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,I. Rutishauser
+00:59:38.376,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,V. Laino
+00:59:40.707,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Buzás
+00:59:44.638,pass,['short_or_medium_pass'],K. Buzás,Grasshopper,
+01:00:26.559,pass,"['forward_pass', 'progressive_pass', 'recovery', 'counterpressing_recovery', 'short_or_medium_pass']",M. Höbinger,Zürich,F. Humm
+01:00:27.945,pass,"['lateral_pass', 'pass_to_final_third', 'short_or_medium_pass']",F. Humm,Zürich,M. Rey
+01:00:30.265,pass,"['lateral_pass', 'long_pass', 'progressive_pass']",M. Rey,Zürich,S. Piubel
+01:01:44.533,pass,"['lateral_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,E. Pápai
+01:01:49.786,pass,"['back_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,V. Laino
+01:01:51.495,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,S. Jackson
+01:02:33.990,pass,"['forward_pass', 'short_or_medium_pass', 'under_pressure']",N. Mégroz,Zürich,M. Höbinger
+01:02:36.530,pass,['short_or_medium_pass'],M. Höbinger,Zürich,
+01:02:39.592,pass,"['lateral_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,
+01:02:42.275,pass,"['forward_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,S. Jackson
+01:02:44.140,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",S. Jackson,Grasshopper,V. Laino
+01:02:47.417,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,I. Rutishauser
+01:02:50.287,pass,"['forward_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,S. Jackson
+01:02:53.196,pass,"['lateral_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,N. Ivelj
+01:02:57.852,pass,"['lateral_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,I. Rutishauser
+01:03:01.016,pass,"['forward_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,V. Laino
+01:03:03.462,pass,"['forward_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,E. Pápai
+01:03:05.894,pass,"['lateral_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,N. Ivelj
+01:03:07.958,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,R. Rinast
+01:03:09.484,pass,"['short_or_medium_pass', 'under_pressure']",R. Rinast,Grasshopper,S. Jackson
+01:03:12.692,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass', 'shot_assist']",J. Stierli,Zürich,F. Humm
+01:03:24.880,pass,"['forward_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,V. Laino
+01:03:26.841,pass,"['lateral_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,N. Ivelj
+01:03:30.526,pass,"['forward_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,S. Jackson
+01:03:31.216,pass,"['loss', 'short_or_medium_pass', 'under_pressure']",S. Jackson,Grasshopper,N. Riesen
+01:03:37.742,pass,"['deep_completion', 'forward_pass', 'pass_to_penalty_area', 'progressive_pass', 'short_or_medium_pass', 'shot_assist']",S. Piubel,Zürich,N. Riesen
+01:04:31.661,pass,"['back_pass', 'short_or_medium_pass']",K. Wienerroither,Grasshopper,S. Jackson
+01:04:34.759,pass,"['lateral_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Zhang Linyan
+01:04:38.027,pass,"['pass_to_final_third', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,J. Egli
+01:04:39.058,pass,"['back_pass', 'short_or_medium_pass']",J. Egli,Grasshopper,Marta Cazalla
+01:04:42.859,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third', 'pass_to_penalty_area']",Marta Cazalla,Grasshopper,L. Vetterlein
+01:05:03.706,pass,"['cross', 'cross_blocked', 'touch_in_box']",K. Wienerroither,Grasshopper,
+01:05:38.055,pass,"['lateral_pass', 'short_or_medium_pass']",S. Piubel,Zürich,A. Pilgrim
+01:05:43.109,pass,"['back_pass', 'short_or_medium_pass']",A. Pilgrim,Zürich,N. Mégroz
+01:05:45.475,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",N. Mégroz,Zürich,S. Piubel
+01:05:55.433,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",J. Egli,Grasshopper,M. Höbinger
+01:05:58.601,pass,"['lateral_pass', 'long_pass', 'recovery']",M. Höbinger,Zürich,N. Riesen
+01:06:04.955,pass,"['lateral_pass', 'short_or_medium_pass']",N. Riesen,Zürich,J. Stierli
+01:06:08.340,pass,"['forward_pass', 'short_or_medium_pass']",J. Stierli,Zürich,M. Rey
+01:06:14.162,pass,"['forward_pass', 'long_pass', 'loss']",J. Stierli,Zürich,S. Jackson
+01:06:16.348,pass,"['forward_pass', 'head_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,
+01:07:02.013,pass,"['back_pass', 'short_or_medium_pass']",M. Rey,Zürich,J. Stierli
+01:07:03.277,pass,"['forward_pass', 'long_pass', 'progressive_pass']",J. Stierli,Zürich,
+01:07:05.813,pass,"['head_pass', 'short_or_medium_pass']",O. Woś,Zürich,
+01:07:25.717,pass,['short_or_medium_pass'],V. Laino,Grasshopper,S. Jackson
+01:07:27.440,pass,"['forward_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,K. Wienerroither
+01:07:32.666,pass,"['loss', 'progressive_pass', 'short_or_medium_pass']",K. Wienerroither,Grasshopper,M. Höbinger
+01:07:38.391,pass,"['cross', 'deep_completed_cross', 'lateral_pass', 'pass_to_penalty_area', 'progressive_pass']",M. Höbinger,Zürich,A. Pilgrim
+01:07:45.839,pass,"['cross', 'cross_blocked', 'touch_in_box']",A. Pilgrim,Zürich,
+01:08:25.372,pass,"['forward_pass', 'long_pass', 'pass_to_final_third']",Zhang Linyan,Grasshopper,N. Mégroz
+01:08:29.534,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",N. Mégroz,Zürich,S. Friedli
+01:08:40.779,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,N. Mégroz
+01:08:44.723,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,J. Egli
+01:08:51.168,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",A. Pilgrim,Zürich,V. Laino
+01:09:06.928,pass,"['deep_completion', 'short_or_medium_pass', 'touch_in_box']",Zhang Linyan,Grasshopper,K. Wienerroither
+01:10:37.367,pass,"['forward_pass', 'head_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",A. Pilgrim,Zürich,E. Pápai
+01:10:42.457,pass,"['back_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,I. Rutishauser
+01:10:47.382,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+01:10:49.908,pass,"['head_pass', 'lateral_pass', 'progressive_pass', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,V. Laino
+01:10:52.289,pass,"['lateral_pass', 'short_or_medium_pass', 'shot_assist']",V. Laino,Grasshopper,E. Ljustina
+01:10:59.148,pass,['short_or_medium_pass'],S. Jackson,Grasshopper,E. Pápai
+01:11:01.155,pass,"['lateral_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,J. Egli
+01:11:25.279,pass,"['forward_pass', 'short_or_medium_pass']",N. Riesen,Zürich,O. Woś
+01:11:27.729,pass,"['lateral_pass', 'linkup_play', 'long_pass', 'under_pressure']",O. Woś,Zürich,M. Höbinger
+01:11:31.212,pass,['short_or_medium_pass'],M. Höbinger,Zürich,L. Vetterlein
+01:11:34.015,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",L. Vetterlein,Zürich,A. Pilgrim
+01:11:42.566,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",J. Egli,Grasshopper,N. Mégroz
+01:11:44.871,pass,"['forward_pass', 'progressive_pass', 'recovery', 'short_or_medium_pass']",N. Mégroz,Zürich,O. Woś
+01:11:51.330,pass,"['forward_pass', 'short_or_medium_pass']",O. Woś,Zürich,A. Pilgrim
+01:11:53.202,pass,['short_or_medium_pass'],A. Pilgrim,Zürich,O. Woś
+01:11:58.478,pass,"['forward_pass', 'short_or_medium_pass']",V. Laino,Grasshopper,E. Pápai
+01:12:05.232,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,Zhang Linyan
+01:12:09.557,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",J. Stierli,Zürich,N. Mégroz
+01:12:14.592,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,M. Höbinger
+01:12:17.901,pass,"['forward_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,A. Pilgrim
+01:12:32.025,pass,"['forward_pass', 'long_pass', 'progressive_pass']",R. Rinast,Grasshopper,Zhang Linyan
+01:12:47.576,pass,"['back_pass', 'short_or_medium_pass']",S. Piubel,Zürich,N. Mégroz
+01:12:48.359,pass,"['lateral_pass', 'long_pass']",N. Mégroz,Zürich,O. Woś
+01:12:51.609,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",O. Woś,Zürich,M. Rey
+01:12:56.221,pass,"['forward_pass', 'short_or_medium_pass']",M. Rey,Zürich,V. Pinther
+01:13:00.063,pass,"['back_pass', 'recovery', 'short_or_medium_pass', 'under_pressure']",R. Rinast,Grasshopper,I. Rutishauser
+01:13:03.245,pass,"['forward_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,V. Laino
+01:13:10.118,pass,"['forward_pass', 'long_pass', 'progressive_pass']",V. Laino,Grasshopper,Zhang Linyan
+01:13:15.285,pass,['short_or_medium_pass'],M. Höbinger,Zürich,M. Rey
+01:13:19.870,pass,"['forward_pass', 'recovery', 'short_or_medium_pass']",E. Ljustina,Grasshopper,Zhang Linyan
+01:14:16.335,pass,"['forward_pass', 'short_or_medium_pass']",E. Ljustina,Grasshopper,R. Rinast
+01:14:17.805,pass,"['cross', 'cross_blocked']",R. Rinast,Grasshopper,
+01:14:19.419,pass,"['cross', 'lateral_pass', 'pass_to_penalty_area']",R. Rinast,Grasshopper,S. Friedli
+01:14:28.303,pass,"['hand_pass', 'lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,
+01:14:35.495,pass,"['back_pass', 'progressive_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,
+01:14:47.660,pass,"['cross', 'cross_blocked']",Marta Cazalla,Grasshopper,
+01:14:50.097,pass,"['forward_pass', 'recovery', 'counterpressing_recovery', 'short_or_medium_pass']",S. Jackson,Grasshopper,E. Pápai
+01:15:06.637,pass,"['hand_pass', 'lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,J. Stierli
+01:15:09.891,pass,"['forward_pass', 'long_pass', 'progressive_pass']",J. Stierli,Zürich,O. Woś
+01:15:13.852,pass,"['forward_pass', 'pass_to_final_third', 'recovery', 'short_or_medium_pass']",S. Jackson,Grasshopper,R. Rinast
+01:15:14.488,pass,"['back_pass', 'short_or_medium_pass']",R. Rinast,Grasshopper,N. Ivelj
+01:15:18.550,pass,"['lateral_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,E. Pápai
+01:15:22.944,pass,"['forward_pass', 'loss', 'pass_to_final_third', 'short_or_medium_pass']",E. Pápai,Grasshopper,L. Vetterlein
+01:15:24.085,pass,"['lateral_pass', 'long_pass', 'recovery']",L. Vetterlein,Zürich,V. Pinther
+01:15:29.581,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",V. Pinther,Zürich,N. Ivelj
+01:16:18.578,pass,"['forward_pass', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,E. Ljustina
+01:16:21.688,pass,"['progressive_pass', 'short_or_medium_pass']",V. Bernauer,Zürich,
+01:16:32.241,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,S. Jackson
+01:16:36.544,pass,"['lateral_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,N. Mégroz
+01:16:47.690,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",I. Pando,Zürich,Marta Cazalla
+01:16:51.698,pass,"['forward_pass', 'pass_to_final_third', 'short_or_medium_pass']",V. Laino,Grasshopper,K. Wienerroither
+01:16:53.980,pass,"['back_pass', 'short_or_medium_pass']",K. Wienerroither,Grasshopper,V. Laino
+01:16:58.100,pass,"['forward_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,K. Wienerroither
+01:16:58.988,pass,"['loss', 'short_or_medium_pass']",K. Wienerroither,Grasshopper,M. Höbinger
+01:16:59.941,pass,"['loss', 'short_or_medium_pass']",E. Pápai,Grasshopper,L. Vetterlein
+01:17:00.900,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,K. Wienerroither
+01:17:02.547,pass,"['forward_pass', 'long_pass', 'loss', 'progressive_pass']",N. Mégroz,Zürich,N. Ivelj
+01:17:05.921,pass,"['short_or_medium_pass', 'under_pressure']",V. Laino,Grasshopper,N. Ivelj
+01:17:08.584,pass,"['back_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,I. Rutishauser
+01:17:15.947,pass,"['forward_pass', 'long_pass', 'loss']",I. Rutishauser,Grasshopper,M. Rey
+01:17:27.917,pass,"['loss', 'short_or_medium_pass']",O. Woś,Zürich,N. Ivelj
+01:17:45.907,pass,"['forward_pass', 'loss', 'short_or_medium_pass']",M. Höbinger,Zürich,N. Ivelj
+01:17:47.900,pass,"['forward_pass', 'short_or_medium_pass']",R. Rinast,Grasshopper,Zhang Linyan
+01:17:50.250,pass,"['forward_pass', 'loss', 'pass_to_final_third', 'short_or_medium_pass']",O. Woś,Zürich,N. Ivelj
+01:17:50.970,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,J. Stierli
+01:17:52.656,pass,"['lateral_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass', 'recovery', 'counterpressing_recovery']",J. Stierli,Zürich,I. Pando
+01:17:55.551,pass,"['forward_pass', 'head_pass', 'loss', 'carry', 'short_or_medium_pass']",I. Pando,Zürich,Marta Cazalla
+01:18:01.973,pass,"['forward_pass', 'head_pass', 'loss', 'short_or_medium_pass']",I. Pando,Zürich,V. Laino
+01:18:05.566,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",V. Laino,Grasshopper,J. Egli
+01:18:08.872,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",J. Egli,Grasshopper,I. Rutishauser
+01:18:12.953,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,N. Ivelj
+01:18:16.293,pass,"['lateral_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,E. Pápai
+01:18:20.396,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",E. Pápai,Grasshopper,I. Rutishauser
+01:18:24.878,pass,"['lateral_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,Marta Cazalla
+01:18:28.616,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",Marta Cazalla,Grasshopper,K. Wienerroither
+01:18:35.354,pass,"['lateral_pass', 'short_or_medium_pass']",J. Stierli,Zürich,L. Vetterlein
+01:18:42.134,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",L. Vetterlein,Zürich,I. Pando
+01:18:49.269,pass,"['back_pass', 'cross', 'loss', 'touch_in_box']",I. Pando,Zürich,V. Laino
+01:19:07.383,pass,"['forward_pass', 'long_pass', 'progressive_pass']",N. Ivelj,Grasshopper,
+01:19:21.493,pass,"['lateral_pass', 'short_or_medium_pass']",J. Stierli,Zürich,S. Friedli
+01:19:25.380,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,N. Mégroz
+01:19:30.912,pass,"['forward_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,I. Pando
+01:19:32.564,pass,"['short_or_medium_pass', 'under_pressure']",I. Pando,Zürich,M. Höbinger
+01:19:33.430,pass,"['forward_pass', 'loss', 'short_or_medium_pass', 'under_pressure']",M. Höbinger,Zürich,Marta Cazalla
+01:19:37.037,pass,"['forward_pass', 'recovery', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,S. Jackson
+01:19:39.422,pass,"['lateral_pass', 'loss', 'short_or_medium_pass']",S. Jackson,Grasshopper,V. Bernauer
+01:19:43.265,pass,"['back_pass', 'short_or_medium_pass']",S. Piubel,Zürich,V. Bernauer
+01:19:44.522,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",V. Bernauer,Zürich,A. Pilgrim
+01:20:58.756,pass,['short_or_medium_pass'],Marta Cazalla,Grasshopper,I. Rutishauser
+01:21:00.232,pass,"['forward_pass', 'long_pass', 'progressive_pass']",I. Rutishauser,Grasshopper,K. Wienerroither
+01:21:05.286,pass,"['lateral_pass', 'short_or_medium_pass']",K. Wienerroither,Grasshopper,J. Egli
+01:21:09.581,pass,"['back_pass', 'recovery', 'short_or_medium_pass']",I. Pando,Zürich,N. Mégroz
+01:21:12.181,pass,"['lateral_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,L. Vetterlein
+01:21:14.815,pass,"['back_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,S. Friedli
+01:21:19.233,pass,"['lateral_pass', 'long_pass']",S. Friedli,Zürich,N. Mégroz
+01:21:30.210,pass,"['lateral_pass', 'loss', 'pass_to_final_third', 'short_or_medium_pass']",N. Mégroz,Zürich,N. Ivelj
+01:21:35.307,pass,"['forward_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,E. Ljustina
+01:21:37.565,pass,"['short_or_medium_pass', 'under_pressure']",E. Ljustina,Grasshopper,
+01:21:38.680,pass,"['short_or_medium_pass', 'under_pressure']",Zhang Linyan,Grasshopper,E. Ljustina
+01:21:46.305,pass,"['forward_pass', 'long_pass', 'pass_to_final_third']",V. Bernauer,Zürich,Marta Cazalla
+01:21:57.622,pass,"['recovery', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,I. Rutishauser
+01:21:59.457,pass,"['forward_pass', 'long_pass', 'progressive_pass', 'under_pressure']",I. Rutishauser,Grasshopper,Zhang Linyan
+01:22:07.132,pass,"['lateral_pass', 'recovery', 'short_or_medium_pass']",N. Mégroz,Zürich,S. Friedli
+01:22:13.036,pass,"['lateral_pass', 'short_or_medium_pass']",S. Friedli,Zürich,L. Vetterlein
+01:22:16.429,pass,"['lateral_pass', 'short_or_medium_pass']",L. Vetterlein,Zürich,M. Höbinger
+01:22:18.384,pass,"['lateral_pass', 'short_or_medium_pass', 'under_pressure']",M. Höbinger,Zürich,N. Mégroz
+01:22:21.341,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,S. Piubel
+01:22:24.075,pass,"['linkup_play', 'short_or_medium_pass', 'under_pressure']",S. Piubel,Zürich,M. Höbinger
+01:22:26.788,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",M. Höbinger,Zürich,
+01:22:31.061,pass,"['forward_pass', 'linkup_play', 'short_or_medium_pass']",O. Woś,Zürich,Marta Cazalla
+01:23:22.567,pass,"['back_pass', 'short_or_medium_pass']",V. Bernauer,Zürich,
+01:23:24.298,pass,"['cross', 'lateral_pass', 'long_pass']",M. Höbinger,Zürich,L. Vetterlein
+01:23:45.916,pass,"['cross', 'deep_completed_cross', 'key_pass', 'lateral_pass', 'pass_to_penalty_area', 'progressive_pass', 'shot_assist']",A. Pilgrim,Zürich,O. Woś
+01:23:49.640,pass,"['forward_pass', 'hand_pass', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,E. Pápai
+01:23:52.817,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass', 'under_pressure']",E. Pápai,Grasshopper,M. Höbinger
+01:24:01.092,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass', 'recovery']",K. Wienerroither,Grasshopper,E. Ljustina
+01:24:23.752,pass,"['recovery', 'counterpressing_recovery', 'short_or_medium_pass']",V. Bernauer,Zürich,
+01:24:24.839,pass,"['forward_pass', 'loss', 'pass_to_penalty_area', 'short_or_medium_pass']",K. Wienerroither,Grasshopper,L. Vetterlein
+01:24:25.284,pass,"['lateral_pass', 'recovery', 'counterpressing_recovery', 'short_or_medium_pass']",L. Vetterlein,Zürich,M. Rey
+01:24:26.044,pass,"['back_pass', 'loss', 'progressive_pass', 'short_or_medium_pass', 'under_pressure']",M. Rey,Zürich,Zhang Linyan
+01:25:34.102,pass,"['back_pass', 'short_or_medium_pass']",O. Woś,Zürich,L. Vetterlein
+01:25:39.858,pass,"['deep_completion', 'forward_pass', 'long_pass', 'pass_to_final_third', 'pass_to_penalty_area', 'progressive_pass', 'through_pass']",L. Vetterlein,Zürich,I. Pando
+01:25:45.899,pass,"['lateral_pass', 'loss', 'short_or_medium_pass', 'touch_in_box']",I. Pando,Zürich,N. Ivelj
+01:25:51.534,pass,"['forward_pass', 'loss', 'progressive_pass', 'short_or_medium_pass']",N. Ivelj,Grasshopper,V. Bernauer
+01:25:53.857,pass,"['forward_pass', 'progressive_pass', 'recovery', 'counterpressing_recovery', 'short_or_medium_pass']",V. Bernauer,Zürich,S. Piubel
+01:25:57.564,pass,"['lateral_pass', 'short_or_medium_pass', 'shot_assist']",S. Piubel,Zürich,A. Pilgrim
+01:26:05.089,pass,"['forward_pass', 'hand_pass', 'recovery', 'short_or_medium_pass']",I. Rutishauser,Grasshopper,E. Pápai
+01:26:09.041,pass,"['forward_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,S. Jackson
+01:26:14.081,pass,"['forward_pass', 'pass_to_final_third', 'progressive_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,
+01:26:43.557,pass,"['forward_pass', 'long_pass', 'progressive_pass']",J. Stierli,Zürich,A. Pilgrim
+01:26:45.050,pass,"['head_pass', 'short_or_medium_pass']",A. Pilgrim,Zürich,S. Piubel
+01:26:49.115,pass,"['third_assist', 'short_or_medium_pass']",S. Piubel,Zürich,M. Höbinger
+01:26:50.756,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'second_assist', 'progressive_pass', 'through_pass']",M. Höbinger,Zürich,I. Pando
+01:26:54.651,pass,"['assist', 'cross', 'deep_completed_cross', 'key_pass', 'lateral_pass', 'pass_to_penalty_area', 'progressive_pass', 'shot_assist']",I. Pando,Zürich,O. Woś
+01:27:50.154,pass,"['back_pass', 'short_or_medium_pass']",K. Wienerroither,Grasshopper,S. Jackson
+01:27:53.801,pass,['short_or_medium_pass'],S. Jackson,Grasshopper,E. Pápai
+01:27:59.591,pass,"['forward_pass', 'progressive_pass', 'short_or_medium_pass']",E. Pápai,Grasshopper,Zhang Linyan
+01:28:02.063,pass,"['lateral_pass', 'pass_to_final_third', 'short_or_medium_pass']",Zhang Linyan,Grasshopper,J. Egli
+01:28:06.788,pass,"['lateral_pass', 'short_or_medium_pass']",J. Egli,Grasshopper,Zhang Linyan
+01:28:12.922,pass,"['lateral_pass', 'short_or_medium_pass', 'touch_in_box']",Zhang Linyan,Grasshopper,J. Egli
+01:28:14.426,pass,"['cross', 'lateral_pass', 'loss', 'pass_to_penalty_area']",J. Egli,Grasshopper,L. Vetterlein
+01:28:35.781,pass,"['forward_pass', 'long_pass', 'loss', 'progressive_pass']",L. Vetterlein,Zürich,Marta Cazalla
+01:28:39.311,pass,"['forward_pass', 'head_pass', 'recovery', 'short_or_medium_pass']",Marta Cazalla,Grasshopper,J. Egli
+01:28:42.846,pass,"['back_pass', 'short_or_medium_pass']",J. Egli,Grasshopper,I. Rutishauser
+01:28:55.250,pass,"['cross', 'lateral_pass', 'loss', 'pass_to_penalty_area']",A. Pilgrim,Zürich,Marta Cazalla
+01:28:56.789,pass,"['forward_pass', 'long_pass', 'recovery', 'counterpressing_recovery']",Marta Cazalla,Grasshopper,E. Ljustina
+01:29:17.337,pass,"['hand_pass', 'lateral_pass', 'recovery', 'short_or_medium_pass']",S. Friedli,Zürich,N. Mégroz
+01:29:28.089,pass,"['forward_pass', 'short_or_medium_pass']",N. Mégroz,Zürich,S. Piubel
+01:29:29.844,pass,"['back_pass', 'short_or_medium_pass', 'under_pressure']",S. Piubel,Zürich,I. Pando
+01:29:31.471,pass,"['forward_pass', 'long_pass', 'pass_to_final_third', 'progressive_pass']",I. Pando,Zürich,S. Piubel
+01:29:37.400,pass,"['lateral_pass', 'short_or_medium_pass']",S. Piubel,Zürich,O. Woś
+01:29:56.656,pass,"['forward_pass', 'long_pass', 'recovery', 'counterpressing_recovery']",M. Rey,Zürich,V. Bernauer
+01:30:00.724,pass,"['lateral_pass', 'short_or_medium_pass']",V. Bernauer,Zürich,M. Rey
+01:30:04.222,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third']",M. Rey,Zürich,V. Laino
+01:30:21.998,pass,"['third_assist', 'short_or_medium_pass']",A. Pilgrim,Zürich,M. Höbinger
+01:30:23.494,pass,"['lateral_pass', 'second_assist', 'short_or_medium_pass']",M. Höbinger,Zürich,M. Rey
+01:30:26.216,pass,"['assist', 'cross', 'deep_completed_cross', 'key_pass', 'lateral_pass', 'pass_to_penalty_area', 'progressive_pass', 'shot_assist']",M. Rey,Zürich,M. Höbinger
+01:31:13.326,pass,"['back_pass', 'short_or_medium_pass']",K. Wienerroither,Grasshopper,S. Jackson
+01:31:17.169,pass,['short_or_medium_pass'],S. Jackson,Grasshopper,E. Pápai
+01:31:22.666,pass,"['lateral_pass', 'short_or_medium_pass']",S. Jackson,Grasshopper,Marta Cazalla
+01:31:25.473,pass,"['forward_pass', 'loss', 'short_or_medium_pass', 'under_pressure']",Marta Cazalla,Grasshopper,N. Mégroz
+01:31:27.025,pass,"['forward_pass', 'long_pass', 'loss', 'pass_to_final_third']",N. Mégroz,Zürich,V. Laino
+01:31:51.879,pass,"['forward_pass', 'short_or_medium_pass']",S. Piubel,Zürich,N. Mégroz
+01:32:22.791,pass,"['back_pass', 'short_or_medium_pass']",V. Bernauer,Zürich,M. Höbinger
+01:32:23.562,pass,"['loss', 'short_or_medium_pass']",M. Höbinger,Zürich,Zhang Linyan
+01:32:32.651,pass,"['forward_pass', 'pass_to_final_third', 'short_or_medium_pass']",K. Wienerroither,Grasshopper,
+01:32:35.849,pass,"['long_pass', 'progressive_pass']",N. Mégroz,Zürich,

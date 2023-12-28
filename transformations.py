@@ -5,7 +5,7 @@ import numpy as np
 from datetime import timedelta, datetime
 import math
 
-#action lists (might be incomplete)
+#action lists (no instat documentation->might be incomplete)
 
 shotlist = ['Shot into the bar/post',
     'Blocked shot',
@@ -77,7 +77,7 @@ duel_events= [
     'Unsuccessful dribbling'
 ]
 gameinterruption_events=[
-    'Ball out of the field'  #are there more events?
+    'Ball out of the field'  
 ]
 
 infraction_events = [
@@ -284,8 +284,9 @@ def position_transform(instat_position, formation):
         case None:
             return None
         case _:
-            print(instat_position)
-            raise Exception("position could not be found")
+            return None
+            #print(instat_position)
+            #raise Exception("position could not be found")
 
 def adjustformation(formation):
     match formation:
@@ -402,9 +403,10 @@ def get_pass_recipient(df, ind):
     rec = df['player_name'].iloc[index]
     rec_team = df['team_name'].iloc[index]
     while (origin_team!=rec_team or origin_player==rec):
-        if(action=='Match End'):
+        if(action=='Match end'):
             return np.nan, np.nan
         index+=1
+        action=df['action_name'].iloc[index]
         rec = df['player_name'].iloc[index]
         rec_team= df['team_name'].iloc[index]
     position = df['position_name'].iloc[index]
@@ -971,7 +973,6 @@ def foulsuffered(wyscout, name):
     if(primary=='duel'):
         if(oppname!=name):
             secondary+=['foul_suffered']
-            print('reached')
             wyscout['type.secondary'].iloc[ind]=secondary
         elif(wyscout['player.name'].iloc[ind2]!=name):
             if(wyscout['player.name'].iloc[ind2]!=name):
@@ -996,7 +997,7 @@ def create_goal_kick(wyscout, destx, desty, keeperA, keeperB, teamA, teamB, new_
     accurate=np.nan
     
     goalkickevent['type.primary']='goal_kick'
-    goalkickevent['type.secondary']=[]
+    goalkickevent['type.secondary']=['generated_goal_kick']
     goalkickevent['location.x']=locx
     goalkickevent['location.y']=locy
     goalkickevent['team.name']=poss_team
@@ -1033,7 +1034,7 @@ def create_throw_in(lastloc,lastlocy,destx,desty, teamA, teamB, new_event):
     length=math.sqrt(dx*dx+dy*dy)
 
     event['type.primary']='throw_in'
-    event['type.secondary']=[]
+    event['type.secondary']=['generated_throw_in']
     event['location.x']=lastloc
     event['location.y']=lastlocy
     event['team.name']=poss_team
