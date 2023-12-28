@@ -15,6 +15,7 @@ def create_event(instat, ind, wyscout):
     global current_possession,poss_types, withshot,withshotongoal, withgoal, flank
     period=get_period(instat,ind)
     
+
     index_instat, typeprimary, typesecondary = get_event_type(instat, ind, teamA, teamB, keeperA, keeperB, period)
     action = instat['action_name'].iloc[ind]
     #setup every attribute
