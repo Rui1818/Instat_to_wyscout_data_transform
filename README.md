@@ -10,4 +10,4 @@ Important files are:
 - pandas_to_json.py: transforms the processed dataframe to a wyscout compatible json file
 
 Instat positions and action names can be found in Instat_information folder. 
-The documentation for how the action tags are extracted are in the tag_documentation file.
+A documentation for how the action tags are extracted and how the transformation is derived can be found in the Documentation file.
