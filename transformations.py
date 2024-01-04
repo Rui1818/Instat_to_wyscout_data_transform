@@ -161,7 +161,12 @@ def iswithin20meters(x, y):
         return True
     return False
 
-
+def get_side(y):
+    if (y<33.4):
+        return 'left'
+    if(y>66.6):
+        return 'right'
+    return None
 
 def standart_transform(standart):
     match standart:

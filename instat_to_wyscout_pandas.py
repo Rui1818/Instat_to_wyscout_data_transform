@@ -5,7 +5,7 @@ from transformations import *
 #set all unknown attributes
 relatedEventId=teamId=opponentTeamId=playerId=passrecipientId=possessionId = 0
 possessioneventIndex=possessionteamId=groundDuelopponentId=groundDuelrelatedDuelId=infractionopponentId=shotgoalkeeperActionId=shotgoalkeeperId=aerialDuelopponentId=aerialDuelrelatedDuelId = 0
-passheight=groundduel_take_on=ground_side=None
+passheight=ground_side=None
 postshotxg=shotxg=shotgoalzone=possessionattackxg=aerialduelheight=aerialFirsttouch=aerialdueloppheight=np.nan
 carry_x=carry_y=carry_prog=possessioneventsNumber=np.nan
 
@@ -32,8 +32,8 @@ def create_event(instat, ind, wyscout):
     possteamname = instat['possession_team_name'].iloc[ind]
     possteamformation = teamA[1] if (possteamname==teamA[0]) else teamB[1]
     possession = instat['possession_name'].iloc[ind]
-    keptPoss=None if ('defensive_duel' in typesecondary) else (False if possession=='Transition of possession' else True)
-    stopped_prog=None if ('offensive_duel' in typesecondary) else (True if possession=='Transition of possession' else False)
+    keptPoss= None if ('defensive_duel' in typesecondary) else (False if possession=='Transition of possession' else True)
+    stopped_prog= None if ('offensive_duel' in typesecondary) else (True if possession=='Transition of possession' else False)
     keepercoord_x, keepercoord_y=get_goalkeeper_coordinates(instat, ind, index_instat, keeperA, keeperB)
     reflexsave=False
 
@@ -104,8 +104,9 @@ def create_event(instat, ind, wyscout):
 
     #duel
     if(typeprimary=='duel'):
-        aerialopp=aerialopp_pos=groundopp=groundopp_pos =grounddueltype=np.nan 
-        ground_stopped_prog=ground_recov_poss =ground_side=groundkeptposs=groundduel_progressed_with_ball=np.nan
+        aerialopp=aerialopp_pos=groundopp=groundopp_pos =grounddueltype=groundduel_take_on=np.nan 
+        ground_stopped_prog=ground_recov_poss =groundkeptposs=groundduel_progressed_with_ball=np.nan
+        ground_side=None
 
         duelopp = instat['opponent_name'].iloc[ind]
         duelopp_pos = position_transform(instat['opponent_position_name'].iloc[ind], oppteamformation)
@@ -124,17 +125,24 @@ def create_event(instat, ind, wyscout):
             groundopp_pos = duelopp_pos
             grounddueltype = 'dribble' if 'dribble' in typesecondary else ('defensive_duel' if 'defensive_duel' in typesecondary else 'offensive_duel')
             groundkeptposs = keptPoss
-            groundduel_progressed_with_ball=groundkeptposs #not so clear what progressed with ball means exactly
+            groundduel_progressed_with_ball=groundkeptposs
             ground_stopped_prog=stopped_prog
             ground_recov_poss =ground_stopped_prog #not so clear
-            
+            groundduel_take_on = True if (grounddueltype=='dribble') else False
+            ground_side=get_side(locy)
 
     else:
-        aerialopp=aerialopp_pos=groundopp=groundopp_pos =grounddueltype=np.nan 
-        ground_stopped_prog=ground_recov_poss =ground_side=groundkeptposs=groundduel_progressed_with_ball=np.nan
-    
+        aerialopp=aerialopp_pos=groundopp=groundopp_pos =grounddueltype=groundduel_take_on=np.nan 
+        ground_stopped_prog=ground_recov_poss =groundkeptposs=groundduel_progressed_with_ball=np.nan
+        ground_side=None
     if(typeprimary=='postmatch_penalty'):
         typesecondary=[]
+
+    if('carry' in typesecondary):
+        locxend, locyend=get_dest_location(instat,ind)
+        carry_prog = locxend-locx
+        carry_x = locxend
+        carry_y = locyend
 
     #possession
     if (current_possession[5]>ind):
