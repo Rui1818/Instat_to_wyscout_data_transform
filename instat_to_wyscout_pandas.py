@@ -7,7 +7,7 @@ relatedEventId=teamId=opponentTeamId=playerId=passrecipientId=possessionId = 0
 possessioneventIndex=possessionteamId=groundDuelopponentId=groundDuelrelatedDuelId=infractionopponentId=shotgoalkeeperActionId=shotgoalkeeperId=aerialDuelopponentId=aerialDuelrelatedDuelId = 0
 passheight=ground_side=None
 postshotxg=shotxg=shotgoalzone=possessionattackxg=aerialduelheight=aerialFirsttouch=aerialdueloppheight=np.nan
-carry_x=carry_y=carry_prog=possessioneventsNumber=np.nan
+possessioneventsNumber=np.nan
 
 #function for creating a single event
 def create_event(instat, ind, wyscout):
@@ -143,6 +143,8 @@ def create_event(instat, ind, wyscout):
         carry_prog = locxend-locx
         carry_x = locxend
         carry_y = locyend
+    else:
+        carry_prog=carry_x=carry_y=np.nan
 
     #possession
     if (current_possession[5]>ind):

@@ -229,8 +229,9 @@ def is_prog_pass(x,destx):
             return False
 
 def position_transform(instat_position, formation):
-    defenders=formation[0]
-    midfielders = formation[2]
+    
+    defenders=int(formation[0]) if formation[0].isdigit() else 4
+    midfielders = int(formation[2]) if formation[2].isdigit() else 4
     match instat_position:
         case 'Goalkeeper':
             return "GK"
@@ -313,7 +314,17 @@ def getformations(dataframe):
         if ('2'<x[0]<'6'):
             list+=[x]
             team+=[teams]
-
+    if(len(list)<2):
+        for j in range(100):
+            teams=dft.iloc[j]
+            if(teams not in team and teams!=None):
+                team+=[teams]
+            if(len(team)==2):
+                if(len(list)<1):
+                    return [team[0],'no formation'], [team[1], 'no formation']
+                else:
+                    return [team[0], list[0]], [team[1], 'no formation']
+                    
     team1 = [team[0], adjustformation(list[0])]
     team2 = [team[1], adjustformation(list[1])]
             
