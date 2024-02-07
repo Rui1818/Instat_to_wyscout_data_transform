@@ -428,6 +428,12 @@ def get_pass_recipient(df, ind):
     position = df['position_name'].iloc[index]
     return rec, position
 
+def isshotassist(df, ind):
+    if(df['action_name'].iloc[ind]=='Match end'):
+        return False
+    if(get_primary_type(df, ind)=='shot'):
+        return True
+    return False
 
 
 #function for possessions
@@ -554,8 +560,8 @@ def get_primary_type (df, index):
     if action == "Dribbling":
         return "touch"
     else:
-        print('index: '+index+', ')
         print(df['action_name'].iloc[index])
+        print('index: ',index)
         raise Exception("no primary event was found")
     
 
@@ -579,6 +585,8 @@ def check_duel_secondaries(df, index, action, secondary):
         secondary+=["defensive_duel"]
 
     return secondary
+
+
 
 
 def check_pass_secondaries(df, index, action, secondary):

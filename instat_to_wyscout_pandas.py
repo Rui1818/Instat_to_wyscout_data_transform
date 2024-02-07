@@ -61,9 +61,12 @@ def create_event(instat, ind, wyscout):
         passaccurate=isaccurate_pass(action)
         passangle=calculate_angle(instat["pos_x005F_x"].iloc[ind], instat["pos_y"].iloc[ind], instat["pos_dest_x005F_x"].iloc[ind], instat["pos_dest_y"].iloc[ind])
         passend_x, passend_y=get_dest_location(instat,ind)
+        
         if(passaccurate):
             passrec, passrec_pos_instat = get_pass_recipient(instat, ind)
             passrec_pos = position_transform(passrec_pos_instat, teamformation) 
+            if('shot_assist' not in typesecondary and isshotassist(instat,index_instat)):
+                typesecondary+=['shot_assist']
         else:
             passrec= passrec_pos_instat=passrec_pos=np.nan
     else:
