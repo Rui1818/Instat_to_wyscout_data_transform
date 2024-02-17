@@ -16,6 +16,7 @@ iter_list = [
     "possession"
 ]
 
+#transforms a row in the dataframe to the correct format
 def row_transform(row):
     for category in iter_list:
         row[category]=reconstruct_cases(row,category)
