@@ -6,7 +6,6 @@ from datetime import timedelta, datetime
 import math
 
 #action lists (no instat documentation->might be incomplete)
-
 shotlist = ['Shot into the bar/post',
     'Blocked shot',
     'Shots blocked',
@@ -139,6 +138,7 @@ accurat_pass=[
 
 #helper functions
 def getmatchId(df):
+    #function to extract the Instat match id of the current game. Takes a dataframe as input.
     ind=0
     id = df['id'].iloc[0]
     while(np.isnan(id)):
@@ -147,12 +147,14 @@ def getmatchId(df):
     return id
 
 def isshot (action):
+    #check if a action is in the shot category. Takes a string as input.
     if action in shotlist:
         return True
     return False
 
 
 def iswithin20meters(x, y):
+    #checks if the location is within 20 meters in regard of the goal. Takes x and y coordinates in Instat format as input.
     newx=105-x
     newy=34-y
     distance2= math.pow(newx,2)+math.pow(newy,2)
@@ -162,6 +164,7 @@ def iswithin20meters(x, y):
     return False
 
 def get_side(y):
+    #checks on which side the current location is. takes the y coordinates in Wyscout format as input. 
     if (y<33.4):
         return 'left'
     if(y>66.6):
@@ -169,6 +172,7 @@ def get_side(y):
     return None
 
 def standart_transform(standart):
+    #transforms a Instat to a wyscout standart word. Takes a string as input. 
     match standart:
         case 'Indirect free kick':
             return "free_kick"
@@ -187,29 +191,34 @@ def standart_transform(standart):
 
 
 def calculate_angle(x,y,destx,desty):
+    #calculates the angle of a pass according to wyscout standards. Takes two location coordinate pairs as input. 
     dx=destx-x
     dy=desty-y
     angle = math.atan2(dy, dx)
     angle= math.degrees(angle)
     return int(round(angle,0))
 
-def isinpenaltybox(x,y):
+def isinpenaltybox(x,y): 
+    #check if the location is in the penalty box. takes a location pair as input. 
     newx,newy = location_transform(x,y)
     if (newx>=84 and newy>=19 and newy<=81):
         return True
     return False
 
 def isinfinalthird(x):
+    #checks if location is in the final third. Takes the x coordinate in Instat format as input. 
     if(x>=70):
         return True
     return False
 
 def isaccurate_pass(action):
+    #check if a action is a accurate pass. Takes a string as input. 
     if (action in accurat_pass):
         return True
     return False
 
 def is_prog_pass(x,destx):
+    #checks if a pass is progressive according to wyscout definition. Takes two x coordinates in instat format as input
     dx=destx-x
     if(x<=52.5):
         if(destx<=52.5):
@@ -229,7 +238,7 @@ def is_prog_pass(x,destx):
             return False
 
 def position_transform(instat_position, formation):
-    
+    #returns the wyscout position based on the instat position and formation. takes two strings as input. 
     defenders=int(formation[0]) if formation[0].isdigit() else 4
     midfielders = int(formation[2]) if formation[2].isdigit() else 4
     match instat_position:
@@ -295,6 +304,7 @@ def position_transform(instat_position, formation):
             #raise Exception("position could not be found")
 
 def adjustformation(formation):
+    #matches the instat formation with a wyscout formation. Takes a string as input. 
     match formation:
         case '4-4-2 diamond':
             return '4-3-1-2'
@@ -304,6 +314,7 @@ def adjustformation(formation):
             return formation
             
 def getformations(dataframe): 
+    #extracts both of the team formations. takes a dataframe as input
     df=dataframe['action_name']
     dft=dataframe['team_name']
     list=[]
@@ -331,6 +342,7 @@ def getformations(dataframe):
     return team1, team2
 
 def time_transform(sec):
+    #transforms instat time to wyscout time format. takes an integer as input.
     t=timedelta(seconds=sec)
     if(t.microseconds>0):
        return str(t)[:-3] 
@@ -338,17 +350,20 @@ def time_transform(sec):
 
 
 def get_formation(team, formationlist, teamlist):
+    #returns a teams formation given a team, a list, and the data structure saving this information. 
     if (team==teamlist[0]):
         return formationlist[0]
     return formationlist[1]
 
 
 def location_transform(x,y):
+    #transforms instat to wyscout coordinates. Takes instat coordinates as input.
     new_x = x*100/105
     new_y = y*-100/68+100
     return round(new_x,1),round(new_y,1)
     
 def get_keepers(df):
+    #funtion to extract the goalkeepers for both teams and returns it in form of a pair. 
     index=0
     counter=0
     lp=[]
@@ -365,6 +380,7 @@ def get_keepers(df):
 
 
 def bodypart_transform(bodypart):
+    #returns the body part in wyscout format. Takes a string as input
     if (bodypart=='Header' or bodypart=='Hand'):
         return "head_or_other"
     if (bodypart=='Right foot'):
@@ -373,8 +389,28 @@ def bodypart_transform(bodypart):
         return "left_foot"
     return np.nan
 
+def isprogrun(x, destx):
+    #function to check if the current action is a progressive run according to wyscout. takes two x coordinates as input
+    dx=destx-x
+    if(x<=50):
+        if(destx<=50):
+            if(dx>=28.5):
+                return True
+            else:
+                return False
+        else:
+            if(dx>=14.2):
+                return True
+            else:
+                return False
+    else:
+        if(dx>=9.5):
+            return True
+        else:
+            return False
 
 def get_period(df, index):
+    #returns the current half or extra time. Takes a dataframe and a index as input. 
     per = df['half'].iloc[index]
     if (per==1):
         return "1H"
@@ -388,6 +424,7 @@ def get_period(df, index):
         return "P"
 
 def get_time(df, index, period):
+    #transforms instat time format to wyscout time format, given the dataframe, a index and the current period.
     sec = df['second'].iloc[index]
     if(period=='2H'):
         sec=sec+2700   
@@ -402,16 +439,19 @@ def get_time(df, index, period):
     return min, second, time_transform(sec)
 
 def get_location(df, index):
+    #returns the current location in wyscout format, given a dataframe and the index.
     locx = df["pos_x005F_x"].iloc[index]
     locy = df["pos_y"].iloc[index]
     return location_transform(locx, locy)
 
 def get_dest_location(df, index):
+    #returns the destination location in wyscout format, given a dataframe and the index.
     locx = df["pos_dest_x005F_x"].iloc[index]
     locy = df["pos_dest_y"].iloc[index]
     return location_transform(locx, locy)
 
 def get_pass_recipient(df, ind):
+    #returns the recipient of a pass and his position. Takes a dataframe and index. 
     origin_team = df['team_name'].iloc[ind]
     origin_player = df['player_name'].iloc[ind]
     index=ind+1
@@ -429,6 +469,7 @@ def get_pass_recipient(df, ind):
     return rec, position
 
 def isshotassist(df, ind):
+    #check if a action is a shot assist..
     if(df['action_name'].iloc[ind]=='Match end'):
         return False
     if(get_primary_type(df, ind)=='shot'):
@@ -751,6 +792,7 @@ def get_secondary_type(df, index, primary, secondary):
 
 
 def updateinformations(df, index, teamA, teamB, keeperA, keeperB):
+    #updates formations and goalkeepers in the case of a substitution
     if(df['action_name'].iloc[index]=='Substitution'):
             
         ind=index+1
@@ -771,6 +813,7 @@ def updateinformations(df, index, teamA, teamB, keeperA, keeperB):
             ind+=1
 
 def get_event_type(df, index, teamA, teamB,keeperA, keeperB, period):
+    #function to determine the current primary and secondaries. Also returns the index pointing to the next triggerword. 
     action = df['action_name'].iloc[index]
     if (action=='Match end'):
         raise Exception ("event match end should not been reached in this state")
@@ -795,6 +838,9 @@ def get_event_type(df, index, teamA, teamB,keeperA, keeperB, period):
     
     
     return index, primary, list(set(secondary))
+
+
+
 
 #functions for coupled events (shot_against, duel)
 def create_second_duel_event(new_event, keptPoss, stopped_prog, current_possession,poss_types, withshot,withshotongoal, withgoal, flank, newposs, ind):
@@ -901,7 +947,7 @@ def get_goalkeeper_coordinates(df, minindex, maxindex, keeperA, keeperB):
     return np.nan, np.nan
 
 def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keepercoord_y, reflexsave):    
-    #to do: correct timestamps
+    #to improve: timestamps interpolation
 
     new_event_2=new_event.copy()
     opp_team=new_event['team.name']
@@ -953,6 +999,7 @@ def create_second_shot_event(new_event, keeperA, keeperB, keepercoord_x, keeperc
     return new_event_2
 
 def isshotafter(timestamp, wyscout):
+    #check if a action is after a shot. takes a timestamp and a wyscout dataframe as input.
     format_str = "%H:%M:%S.%f" 
     formattedtimestamp = datetime.strptime(timestamp, format_str)
     ind=wyscout.index[-1]
@@ -971,6 +1018,7 @@ def isshotafter(timestamp, wyscout):
     return 0
 
 def isrecovery(possteam,wyscout,secondary, timestamp):
+    #check if a action is a recovery. Takes a teamname, a wyscout dataframe, the current secondary list and a timestamp as input.
     ind=wyscout.index[-1]
     format_str = "%H:%M:%S.%f" 
     formattedtimestamp = datetime.strptime(timestamp, format_str)
@@ -989,6 +1037,7 @@ def isrecovery(possteam,wyscout,secondary, timestamp):
     return secondary
 
 def foulsuffered(wyscout, name):
+    #checks if the current player suffered a foul. Takes a wyscout dataframe and the current players name as input.
     ind=wyscout.index[-1]
     oppname=wyscout['player.name'].iloc[ind]
     primary=wyscout['type.primary'].iloc[ind]
@@ -1082,24 +1131,6 @@ def create_throw_in(lastloc,lastlocy,destx,desty, teamA, teamB, new_event):
 
     return event
 
-def isprogrun(x, destx):
-    dx=destx-x
-    if(x<=50):
-        if(destx<=50):
-            if(dx>=28.5):
-                return True
-            else:
-                return False
-        else:
-            if(dx>=14.2):
-                return True
-            else:
-                return False
-    else:
-        if(dx>=9.5):
-            return True
-        else:
-            return False
 
 def create_touch(touchlocx, touchlocy, locx,locy, oldevent):
     event=oldevent.copy()
