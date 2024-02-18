@@ -11,3 +11,6 @@ Important files are:
 
 Instat positions and action names can be found in Instat_information folder. 
 A documentation for how the action tags are extracted and how the transformation is derived can be found in the Documentation file.
+
+## How to use
+To use the code first clone the repository and install all dependencies (numpy, pandas). Afterwards import the final_transform function from final_transform.py and run it with the path name of the Instat event file and the desired target name as input. The notebook example in the repository shows how to use it. 
